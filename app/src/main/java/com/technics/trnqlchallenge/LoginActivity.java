@@ -30,9 +30,11 @@ public class LoginActivity extends AppCompatActivity {
             nextActivity(profile);
         }
         @Override
-        public void onCancel() {        }
+        public void onCancel() {
+        }
         @Override
-        public void onError(FacebookException e) {      }
+        public void onError(FacebookException e) {
+        }
     };
 
     private void nextActivity(Profile profile) {
@@ -97,7 +99,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-
         super.onPause();
     }
 
