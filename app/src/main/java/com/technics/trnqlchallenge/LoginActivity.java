@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProfileTracker profileTracker;
 
     //Facebook login button
-    private FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>() {
+    FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>() {
         @Override
         public void onSuccess(LoginResult loginResult) {
             Profile profile = Profile.getCurrentProfile();
