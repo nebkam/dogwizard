@@ -19,7 +19,15 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs' //locate the lib-release.aar file in libs folder
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.trnql:lib-release:1.0.0@aar'
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.google.android.gms:play-services:7.5.0'
 }
