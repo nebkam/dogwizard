@@ -23,6 +23,7 @@ repositories {
     flatDir {
         dirs 'libs' //locate the lib-release.aar file in libs folder
     }
+    mavenCentral()
 }
 
 dependencies {
@@ -32,4 +33,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:7.5.0'
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.parse:parse-android:1.+'
+    compile 'com.facebook.android:facebook-android-sdk:4.6.0'
 }
