@@ -3,7 +3,10 @@ package com.technics.trnqlchallenge;
 import com.parse.Parse;
 import com.parse.ParseUser;
 import com.trnql.smart.base.SmartCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends SmartCompatActivity {
 
@@ -22,5 +25,10 @@ public class MainActivity extends SmartCompatActivity {
 //        testObject.put("foo", "bar");
 //        testObject.saveInBackground();
         ParseUser.enableAutomaticUser();
+    }
+
+    public void showSitters(View View) {
+        Intent intent = new Intent(MainActivity.this,MapsActivity.class);
+        startActivity(intent);
     }
 }
