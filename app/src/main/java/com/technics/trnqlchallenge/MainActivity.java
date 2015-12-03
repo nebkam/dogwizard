@@ -1,6 +1,7 @@
 package com.technics.trnqlchallenge;
 
 import com.parse.Parse;
+import com.parse.ParseUser;
 import com.trnql.smart.base.SmartCompatActivity;
 import android.os.Bundle;
 
@@ -20,5 +21,6 @@ public class MainActivity extends SmartCompatActivity {
 //        ParseObject testObject = new ParseObject("TestObject");
 //        testObject.put("foo", "bar");
 //        testObject.saveInBackground();
+        ParseUser.enableAutomaticUser();
     }
 }
