@@ -1,6 +1,6 @@
 package com.technics.trnqlchallenge;
 
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -12,13 +12,19 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.trnql.smart.base.SmartCompatActivity;
 
 public class MapsActivity extends SmartCompatActivity implements OnMapReadyCallback {
-
+    private Double latitude;
+    private Double longitude;
     private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        Intent intent = getIntent();
+        latitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LAT",0);
+        longitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LONG",0);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -40,9 +46,9 @@ public class MapsActivity extends SmartCompatActivity implements OnMapReadyCallb
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng myLatLong = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(myLatLong));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLong));
 
         //Add My location pin and control
         mMap.setMyLocationEnabled(true);

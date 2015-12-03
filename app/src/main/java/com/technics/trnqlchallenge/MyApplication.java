@@ -10,6 +10,9 @@ public class MyApplication extends AppData {
     public void onCreate() {
         super.onCreate();
 
+        //Init TRNQL SDK
+        setApiKey("a260b0e4-74f9-4bc8-bc2c-a73c4861ea82");
+
         //Init Parse SDK
         Parse.initialize(this, "HjP85guTMScAOKptkuVmXNY7OuHxF0HbNEpWl2gD", "LDtwzrmTgBdQPICRLLdhLaNqUR4Q2vnLdzlUewAs");
         ParseUser.enableAutomaticUser();
