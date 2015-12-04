@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TrnqlChallenge</string>
     <string name="fb_app_id">455988501255208</string>
-    <string name="sitter_btn">Need a Sitter?</string>
+    <string name="sitter_btn">Dog Owners Nearby</string>
     <string name="title_activity_maps">Map</string>
 </resources>

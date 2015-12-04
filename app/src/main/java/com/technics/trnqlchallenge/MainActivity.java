@@ -18,10 +18,12 @@ public class MainActivity extends SmartCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Set the UserToken, so we can use SmartPeople
+
         ParseUser user = ParseUser.getCurrentUser();
-        if (user.getObjectId() != null) {
-            getPeopleManager().setUserToken(user.getObjectId());
+        if (user.getObjectId() == null) {
+            Intent intent = new Intent(MainActivity.this,DogDescriptionActivity.class);
+            startActivity(intent);
+//            getPeopleManager().setUserToken(user.getObjectId());
         }
     }
 
