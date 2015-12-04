@@ -16,14 +16,5 @@ public class MyApplication extends AppData {
         //Init Parse SDK
         Parse.initialize(this, "HjP85guTMScAOKptkuVmXNY7OuHxF0HbNEpWl2gD", "LDtwzrmTgBdQPICRLLdhLaNqUR4Q2vnLdzlUewAs");
         ParseUser.enableAutomaticUser();
-
-        ParseUser user = ParseUser.getCurrentUser();
-        //If this is the first launch
-        if (user.getObjectId() == null) {
-            //Default
-            user.put("visible",true);
-            //Save the user in Parse, so we can have an Id
-            user.saveInBackground();
-        }
     }
 }

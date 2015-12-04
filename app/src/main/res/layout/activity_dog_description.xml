@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/pick_breed"
-        android:id="@+id/breedAutoComplete"
+        android:id="@+id/dogBreed"
         android:layout_below="@+id/dogName"
         android:layout_alignLeft="@+id/dogName"
         android:layout_alignStart="@+id/dogName"
@@ -39,7 +39,8 @@
         android:id="@+id/btn_save"
         android:layout_centerVertical="true"
         android:layout_alignRight="@+id/dogName"
-        android:layout_alignEnd="@+id/dogName" />
+        android:layout_alignEnd="@+id/dogName"
+        android:onClick="saveDescription"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -48,5 +49,6 @@
         android:id="@+id/btn_skip"
         android:layout_alignTop="@+id/btn_save"
         android:layout_alignLeft="@+id/dogName"
-        android:layout_alignStart="@+id/dogName" />
+        android:layout_alignStart="@+id/dogName"
+        android:onClick="saveDefaultDescription"/>
 </RelativeLayout>

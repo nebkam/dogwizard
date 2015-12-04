@@ -21,6 +21,7 @@ public class MainActivity extends SmartCompatActivity {
 
         ParseUser user = ParseUser.getCurrentUser();
         if (user.getObjectId() == null) {
+            //First launch
             Intent intent = new Intent(MainActivity.this,DogDescriptionActivity.class);
             startActivity(intent);
         } else {
