@@ -11,6 +11,7 @@ import android.view.View;
 import java.util.List;
 
 public class MainActivity extends SmartCompatActivity {
+    private ParseUser user = ParseUser.getCurrentUser();
     private Double latitude = 37.441883;
     private Double longitude = -122.143019;
 
@@ -19,12 +20,8 @@ public class MainActivity extends SmartCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ParseUser user = ParseUser.getCurrentUser();
-        if (user.getObjectId() == null) {
-            //First launch
-            Intent intent = new Intent(MainActivity.this,DogDescriptionActivity.class);
-            startActivity(intent);
-        } else {
+        //If we've got an ID from Parse, use it as an access token
+        if (user.getObjectId() != null) {
             getPeopleManager().setUserToken(user.getObjectId());
         }
     }
