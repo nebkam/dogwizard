@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">TrnqlChallenge</string>
     <string name="fb_app_id">455988501255208</string>
+    <string name="dog_name">Your Dog\'s Name</string>
+    <string name="pick_breed">Pick a Breed</string>
+    <string name="save">Save</string>
+    <string name="skip">Skip</string>
     <string name="sitter_btn">Dog Owners Nearby</string>
     <string name="title_activity_maps">Map</string>
 </resources>

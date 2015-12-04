@@ -23,7 +23,8 @@ public class MainActivity extends SmartCompatActivity {
         if (user.getObjectId() == null) {
             Intent intent = new Intent(MainActivity.this,DogDescriptionActivity.class);
             startActivity(intent);
-//            getPeopleManager().setUserToken(user.getObjectId());
+        } else {
+            getPeopleManager().setUserToken(user.getObjectId());
         }
     }
 
