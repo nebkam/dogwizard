@@ -14,7 +14,7 @@ import com.trnql.smart.people.PersonEntry;
 
 import java.util.List;
 
-public class MapsActivity extends SmartCompatActivity implements OnMapReadyCallback {
+public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapReadyCallback {
     private Double latitude;
     private Double longitude;
     private GoogleMap mMap;
@@ -23,7 +23,7 @@ public class MapsActivity extends SmartCompatActivity implements OnMapReadyCallb
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_owners_nearby);
 
         Intent intent = getIntent();
         latitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LAT",0);

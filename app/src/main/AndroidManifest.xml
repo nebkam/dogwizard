@@ -51,13 +51,15 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".OwnersNearbyActivity"
             android:label="@string/title_activity_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.technics.trnqlchallenge.MainActivity" />
         </activity>
-        <activity android:name=".DogDescriptionActivity"></activity>
+        <activity android:name=".DogDescriptionActivity">
+
+        </activity>
     </application>
 
 </manifest>

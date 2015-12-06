@@ -34,8 +34,8 @@ public class MainActivity extends SmartCompatActivity {
         longitude = locationEntry.getLongitude();
     }
 
-    public void showSitters(View View) {
-        Intent intent = new Intent(MainActivity.this,MapsActivity.class);
+    public void showOwnersNearby(View View) {
+        Intent intent = new Intent(MainActivity.this,OwnersNearbyActivity.class);
         intent.putExtra("com.technics.trnqlchallenge.LAT", latitude);
         intent.putExtra("com.technics.trnqlchallenge.LONG", longitude);
         startActivity(intent);
