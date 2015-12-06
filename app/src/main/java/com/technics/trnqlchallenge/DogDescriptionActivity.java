@@ -2,17 +2,22 @@ package com.technics.trnqlchallenge;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -77,7 +82,15 @@ public class DogDescriptionActivity extends AppCompatActivity {
             try {
                 Context context = this;
                 InputStream inputStream = context.getContentResolver().openInputStream(data.getData());
-                user.put("photo", "test6"); // TODO: 6.12.15. actually upload input stream instead of test6 string
+
+                Bitmap bm = BitmapFactory.decodeStream(inputStream);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] b = baos.toByteArray();
+
+                String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+                user.put("photo", encodedImage);
                 user.saveInBackground();
             }
             catch (IOException ex){
