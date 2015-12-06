@@ -47,8 +47,8 @@ public class MapsActivity extends SmartCompatActivity implements OnMapReadyCallb
 
         // Add a marker in Sydney and move the camera
         LatLng myLatLong = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().position(myLatLong));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLong));
+//        mMap.addMarker(new MarkerOptions().position(myLatLong));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLong,17));
 
         //Add My location pin and control
         mMap.setMyLocationEnabled(true);
