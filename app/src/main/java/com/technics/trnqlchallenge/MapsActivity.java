@@ -10,11 +10,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.trnql.smart.base.SmartCompatActivity;
+import com.trnql.smart.people.PersonEntry;
+
+import java.util.List;
 
 public class MapsActivity extends SmartCompatActivity implements OnMapReadyCallback {
     private Double latitude;
     private Double longitude;
     private GoogleMap mMap;
+    private Boolean isMapReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +47,23 @@ public class MapsActivity extends SmartCompatActivity implements OnMapReadyCallb
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        isMapReady = true;
 
         LatLng myLatLong = new LatLng(latitude, longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLong,17));
 
         //Add My location pin and control
         mMap.setMyLocationEnabled(true);
+    }
+
+    @Override
+    protected void smartPeopleChange(List<PersonEntry> people) {
+        if (isMapReady) {
+            for (int i = 0; i < people.size(); i++) {
+                PersonEntry personEntry = people.get(1);
+                LatLng latLng = new LatLng(personEntry.getLatitude(),personEntry.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(latLng).title(personEntry.getUserToken()));
+            }
+        }
     }
 }

@@ -3,13 +3,10 @@ package com.technics.trnqlchallenge;
 import com.parse.ParseUser;
 import com.trnql.smart.base.SmartCompatActivity;
 import com.trnql.smart.location.LocationEntry;
-import com.trnql.smart.people.PersonEntry;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-
-import java.util.List;
 
 public class MainActivity extends SmartCompatActivity {
     private ParseUser user = ParseUser.getCurrentUser();
@@ -35,14 +32,6 @@ public class MainActivity extends SmartCompatActivity {
     public void smartLatLngChange(LocationEntry locationEntry) {
         latitude = locationEntry.getLatitude();
         longitude = locationEntry.getLongitude();
-    }
-
-    @Override
-    protected void smartPeopleChange(List<PersonEntry> people) {
-        PersonEntry person = people.get(0);
-        Double personLatitude = person.getLatitude();
-        Double personLongitude = person.getLongitude();
-        Integer personDistanceFromUser = person.getDistanceFromUser();
     }
 
     public void showSitters(View View) {
