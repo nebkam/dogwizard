@@ -51,4 +51,17 @@
         android:layout_alignLeft="@+id/dogName"
         android:layout_alignStart="@+id/dogName"
         android:onClick="saveDefaultDescription"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/picture_upload_btn"
+        android:id="@+id/choose_picture"
+        android:layout_below="@+id/btn_save"
+        android:layout_alignLeft="@+id/btn_skip"
+        android:layout_alignStart="@+id/btn_skip"
+        android:layout_marginTop="37dp"
+        android:layout_alignRight="@+id/dogBreed"
+        android:layout_alignEnd="@+id/dogBreed"
+        android:onClick="pickImage"/>
 </RelativeLayout>

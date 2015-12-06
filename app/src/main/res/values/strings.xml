@@ -7,4 +7,5 @@
     <string name="skip">Skip</string>
     <string name="sitter_btn">Dog Owners Nearby</string>
     <string name="title_activity_maps">Map</string>
+    <string name="picture_upload_btn">Choose picture of your dog</string>
 </resources>
