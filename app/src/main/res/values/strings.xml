@@ -12,4 +12,5 @@
     <string name="settings_title">Settings</string>
     <string name="switch_contact">Allow Other Dog Owners to Contact Me</string>
     <string name="switch_walk_reminder">Dog Walk Reminder</string>
+    <string name="dog_description">Your Dog\'s Name and Breed</string>
 </resources>

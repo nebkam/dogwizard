@@ -31,4 +31,14 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="50dp"
         android:layout_below="@+id/switch_contact" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dog_description"
+        android:id="@+id/btn_dog_description"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="goToDogDescription"/>
 </RelativeLayout>

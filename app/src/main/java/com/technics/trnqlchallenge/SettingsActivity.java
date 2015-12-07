@@ -1,7 +1,9 @@
 package com.technics.trnqlchallenge;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
@@ -40,5 +42,11 @@ public class SettingsActivity extends AppCompatActivity {
                 user.saveInBackground();
             }
         });
+    }
+
+    public void goToDogDescription(View view) {
+        Intent intent = new Intent(SettingsActivity.this,DogDescriptionActivity.class);
+        intent.putExtra("prePopulate",true);
+        startActivity(intent);
     }
 }
