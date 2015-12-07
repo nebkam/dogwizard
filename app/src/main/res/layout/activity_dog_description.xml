@@ -37,31 +37,29 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:id="@+id/btn_save"
-        android:layout_centerVertical="true"
+        android:onClick="saveDescription"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/choose_picture"
         android:layout_alignRight="@+id/dogName"
-        android:layout_alignEnd="@+id/dogName"
-        android:onClick="saveDescription"/>
+        android:layout_alignEnd="@+id/dogName" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/skip"
         android:id="@+id/btn_skip"
+        android:onClick="saveDefaultDescription"
         android:layout_alignTop="@+id/btn_save"
-        android:layout_alignLeft="@+id/dogName"
-        android:layout_alignStart="@+id/dogName"
-        android:onClick="saveDefaultDescription"/>
+        android:layout_alignLeft="@+id/choose_picture"
+        android:layout_alignStart="@+id/choose_picture" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/picture_upload_btn"
         android:id="@+id/choose_picture"
-        android:layout_below="@+id/btn_save"
-        android:layout_alignLeft="@+id/btn_skip"
-        android:layout_alignStart="@+id/btn_skip"
-        android:layout_marginTop="37dp"
-        android:layout_alignRight="@+id/dogBreed"
-        android:layout_alignEnd="@+id/dogBreed"
-        android:onClick="pickImage"/>
+        android:onClick="pickImage"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/btn_save"
+        android:layout_alignEnd="@+id/btn_save" />
 </RelativeLayout>

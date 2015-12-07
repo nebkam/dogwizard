@@ -42,6 +42,20 @@ public class DogDescriptionActivity extends AppCompatActivity {
         AutoCompleteTextView textView = (AutoCompleteTextView)
                 findViewById(R.id.dogBreed);
         textView.setAdapter(adapter);
+
+        if (getIntent().getBooleanExtra("prePopulate", false)){
+
+            EditText myTextBox = (EditText) findViewById(R.id.dogName);
+            AutoCompleteTextView myAutoComplete = (AutoCompleteTextView) findViewById(R.id.dogBreed);
+
+            String dogName = user.getString("dogName");
+            myTextBox.setText(dogName);
+
+            String dogBreed = user.getString("dogBreed");
+            myAutoComplete.setText(dogBreed);
+        }
+
+
     }
 
     public void saveDescription(View View){
