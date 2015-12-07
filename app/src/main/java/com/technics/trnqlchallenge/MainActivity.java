@@ -52,4 +52,9 @@ public class MainActivity extends SmartCompatActivity {
         Intent intent = new Intent(MainActivity.this,DogDescriptionActivity.class);
         startActivity(intent);
     }
+
+    public void settings(View View) {
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+    }
 }

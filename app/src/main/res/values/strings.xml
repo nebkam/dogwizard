@@ -8,4 +8,9 @@
     <string name="show_owners_btn">Dog Owners Nearby</string>
     <string name="title_activity_maps">Map</string>
     <string name="picture_upload_btn">Choose picture of your dog</string>
+    <string name="settings_btn">Settings</string>
+    <string name="settings_title">Settings</string>
+    <string name="switch_dog_sitting">Available for dog sitting</string>
+    <string name="switch_play_dates">Available for play dates</string>
+    <string name="switch_walk_reminder">Dog walk reminder</string>
 </resources>
