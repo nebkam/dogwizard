@@ -45,14 +45,14 @@ public class DogDescriptionActivity extends AppCompatActivity {
 
         if (getIntent().getBooleanExtra("prePopulate", false)){
 
-            EditText myTextBox = (EditText) findViewById(R.id.dogName);
-            AutoCompleteTextView myAutoComplete = (AutoCompleteTextView) findViewById(R.id.dogBreed);
+            EditText dogNameText = (EditText) findViewById(R.id.dogName);
+            AutoCompleteTextView dogBreedText = (AutoCompleteTextView) findViewById(R.id.dogBreed);
 
             String dogName = user.getString("dogName");
-            myTextBox.setText(dogName);
+            dogNameText.setText(dogName);
 
             String dogBreed = user.getString("dogBreed");
-            myAutoComplete.setText(dogBreed);
+            dogBreedText.setText(dogBreed);
         }
 
 
