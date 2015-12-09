@@ -1,6 +1,5 @@
 package com.technics.trnqlchallenge;
 
-import com.parse.ParseUser;
 import com.trnql.smart.base.SmartCompatActivity;
 import com.trnql.smart.location.LocationEntry;
 import android.content.Intent;
@@ -9,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends SmartCompatActivity {
-    private ParseUser user = ParseUser.getCurrentUser();
     private Double latitude = 37.441883;
     private Double longitude = -122.143019;
 
@@ -20,11 +18,6 @@ public class MainActivity extends SmartCompatActivity {
 
         if (isFirstRun()) {
             showSplash();
-        }
-
-        //If we've got an ID from Parse, use it as an access token
-        if (user.getObjectId() != null) {
-            getPeopleManager().setUserToken(user.getObjectId());
         }
     }
 

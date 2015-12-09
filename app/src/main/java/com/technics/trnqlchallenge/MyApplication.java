@@ -1,5 +1,6 @@
 package com.technics.trnqlchallenge;
 
+import com.trnql.smart.people.PeopleManager;
 import com.trnql.zen.core.AppData;
 import com.parse.Parse;
 import com.parse.ParseUser;
@@ -16,5 +17,11 @@ public class MyApplication extends AppData {
         //Init Parse SDK
         Parse.initialize(this, "HjP85guTMScAOKptkuVmXNY7OuHxF0HbNEpWl2gD", "LDtwzrmTgBdQPICRLLdhLaNqUR4Q2vnLdzlUewAs");
         ParseUser.enableAutomaticUser();
+        ParseUser user = ParseUser.getCurrentUser();
+
+        //If we've got an ID from Parse, use it for TRNQL access token
+        if (user.getObjectId() != null) {
+            PeopleManager.INSTANCE.setUserToken(user.getObjectId());
+        }
     }
 }
