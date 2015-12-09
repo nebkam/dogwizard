@@ -27,7 +27,6 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
     private Double latitude;
     private Double longitude;
     private GoogleMap mMap;
-    private Boolean isMapReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +82,6 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        isMapReady = true;
 
         LatLng myLatLong = new LatLng(latitude, longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLong, 17));
