@@ -94,10 +94,6 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-//        LatLng myLatLong = new LatLng(latitude, longitude);
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLong, 17));
-
         //Add My location pin and control
         mMap.setMyLocationEnabled(true);
     }
