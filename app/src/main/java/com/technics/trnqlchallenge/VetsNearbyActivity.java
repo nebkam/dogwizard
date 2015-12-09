@@ -60,10 +60,15 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                             JSONObject obj = resultsArray.getJSONObject(i);
                             Double markerLatitude = obj.getDouble("latitude");
                             Double markerLongitude  = obj.getDouble("longitude");
-                            String company  = obj.getString("company");
+                            String markerTitle;
+                            if (obj.getBoolean("hasCompany")) {
+                                markerTitle = obj.getString("company");
+                            } else {
+                                markerTitle = obj.getString("title")+" "+obj.getString("firstName")+" "+obj.get("lastName");
+                            }
 
                             LatLng latLng = new LatLng(markerLatitude, markerLongitude);
-                            mMap.addMarker(new MarkerOptions().position(latLng).title(company));
+                            mMap.addMarker(new MarkerOptions().position(latLng).title(markerTitle));
                             boundsBuilder.include(latLng);
                         }
                         if (resultsArray.length() > 0) {
