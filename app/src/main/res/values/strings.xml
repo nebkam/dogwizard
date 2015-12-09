@@ -12,6 +12,7 @@
     <string name="picture_upload_btn">Choose picture of your dog</string>
     <string name="settings_btn">Settings</string>
     <string name="settings_title">Settings</string>
+    <string name="vets_title">Vets</string>
     <string name="switch_contact">Allow Other Dog Owners to Contact Me</string>
     <string name="switch_walk_reminder">Dog Walk Reminder</string>
     <string name="dog_description">Your Dog\'s Name and Breed</string>

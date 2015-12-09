@@ -33,6 +33,7 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owners_nearby);
+        setTitle(R.string.vets_title);
 
         Intent intent = getIntent();
         latitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LAT",0);
@@ -43,7 +44,7 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        String url = "https://api.vetfinder.mobi/json/nearest_vets/?lat=46.10027780&long=19.66555560&k=45661619478f11be9a8f8d227e4f3";
+        String url = "https://api.vetfinder.mobi/json/nearest_vets/?lat="+String.valueOf(latitude)+"&long="+String.valueOf(longitude)+"&k=45661619478f11be9a8f8d227e4f3";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
