@@ -18,7 +18,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/show_vets_btn" />
+        android:text="@string/show_vets_btn"
+        android:onClick="showVetsNearby"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

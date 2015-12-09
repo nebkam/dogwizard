@@ -57,4 +57,11 @@ public class MainActivity extends SmartCompatActivity {
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    public void showVetsNearby(View View){
+        Intent intent = new Intent(MainActivity.this, VetsNearbyActivity.class);
+        intent.putExtra("com.technics.trnqlchallenge.LAT", latitude);
+        intent.putExtra("com.technics.trnqlchallenge.LONG", longitude);
+        startActivity(intent);
+    }
 }

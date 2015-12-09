@@ -57,8 +57,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.technics.trnqlchallenge.MainActivity" />
         </activity>
-        <activity android:name=".DogDescriptionActivity"></activity>
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".DogDescriptionActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".VetsNearbyActivity"></activity>
     </application>
 
 </manifest>
