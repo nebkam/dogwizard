@@ -10,11 +10,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
@@ -42,6 +44,7 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        final LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
 
         String url = "https://api.vetfinder.mobi/json/nearest_vets/?lat="+String.valueOf(latitude)+"&long="+String.valueOf(longitude)+"&k=45661619478f11be9a8f8d227e4f3";
 
@@ -61,6 +64,10 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
 
                             LatLng latLng = new LatLng(markerLatitude, markerLongitude);
                             mMap.addMarker(new MarkerOptions().position(latLng).title(company));
+                            boundsBuilder.include(latLng);
+                        }
+                        if (resultsArray.length() > 0) {
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(),30));
                         }
                     }
                     catch (JSONException ex) {
@@ -83,8 +90,8 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        LatLng myLatLong = new LatLng(latitude, longitude);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLong, 17));
+//        LatLng myLatLong = new LatLng(latitude, longitude);
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLong, 17));
 
         //Add My location pin and control
         mMap.setMyLocationEnabled(true);
