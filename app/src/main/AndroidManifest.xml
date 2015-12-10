@@ -60,7 +60,8 @@
         <activity android:name=".DogDescriptionActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".VetsNearbyActivity" />
-        <activity android:name=".VetDetailsActivity"></activity>
+        <activity android:name=".VetDetailsActivity" />
+        <activity android:name=".OwnerDetailsActivity"></activity>
     </application>
 
 </manifest>
