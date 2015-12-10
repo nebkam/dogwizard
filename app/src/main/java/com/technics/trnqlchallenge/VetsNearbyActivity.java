@@ -17,6 +17,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
@@ -37,9 +38,11 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
         setTitle(R.string.vets_title);
 
         Intent intent = getIntent();
-        latitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LAT",0);
-        longitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LONG",0);
+//        latitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LAT",0);
+//        longitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LONG",0);
 
+        latitude = 46.10027780;
+        longitude = 19.66555560;
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -60,16 +63,36 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                             JSONObject obj = resultsArray.getJSONObject(i);
                             Double markerLatitude = obj.getDouble("latitude");
                             Double markerLongitude  = obj.getDouble("longitude");
-                            String markerTitle;
+                            final String markerTitle;
                             if (obj.getBoolean("hasCompany")) {
                                 markerTitle = obj.getString("company");
                             } else {
                                 markerTitle = obj.getString("title")+" "+obj.getString("firstName")+" "+obj.get("lastName");
                             }
 
+                            final String city = obj.getString("city");
+                            final String street = obj.getString("street");
+                            final String streetNumber = obj.getString("streetNumber");
+                            final String phone = obj.getString("phone");
+
                             LatLng latLng = new LatLng(markerLatitude, markerLongitude);
                             mMap.addMarker(new MarkerOptions().position(latLng).title(markerTitle));
                             boundsBuilder.include(latLng);
+
+                            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                                @Override
+                                public boolean onMarkerClick(Marker marker) {
+                                    Intent intent1 = new Intent(VetsNearbyActivity.this, VetDetailsActivity.class);
+                                    intent1.putExtra("title", markerTitle);
+                                    intent1.putExtra("city", city);
+                                    intent1.putExtra("street", street);
+                                    intent1.putExtra("streetNumber", streetNumber);
+                                    intent1.putExtra("phone", phone);
+                                    startActivity(intent1);
+                                    return true;
+                                }
+                            });
+
                         }
                         if (resultsArray.length() > 0) {
                             mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(),30));

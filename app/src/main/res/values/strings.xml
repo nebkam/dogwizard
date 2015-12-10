@@ -13,7 +13,13 @@
     <string name="settings_btn">Settings</string>
     <string name="settings_title">Settings</string>
     <string name="vets_title">Vets</string>
+    <string name="vet_details_title">Vet details</string>
     <string name="switch_contact">Allow Other Dog Owners to Contact Me</string>
     <string name="switch_walk_reminder">Dog Walk Reminder</string>
     <string name="dog_description">Your Dog\'s Name and Breed</string>
+    <string name="vet_address_label">Address:</string>
+    <string name="vet_city_label">City:</string>
+    <string name="vet_phone_label">Phone:</string>
+    <string name="vet_address">%1$s  %2$s</string>
+
 </resources>
