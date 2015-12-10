@@ -7,10 +7,8 @@ import android.os.Bundle;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -24,12 +22,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReadyCallback{
     private Double latitude;
     private Double longitude;
     private GoogleMap mMap;
+    private HashMap<String,Vet> vetsFound = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,26 +75,28 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                             final String phone = obj.getString("phone");
 
                             LatLng latLng = new LatLng(markerLatitude, markerLongitude);
-                            mMap.addMarker(new MarkerOptions().position(latLng).title(markerTitle));
+                            Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(markerTitle));
                             boundsBuilder.include(latLng);
 
+                            Vet vetFound = new Vet(markerTitle,city,street,streetNumber,phone);
+                            vetsFound.put(marker.getId(), vetFound);
+                        }
+                        if (resultsArray.length() > 0) {
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 30));
                             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                                 @Override
                                 public boolean onMarkerClick(Marker marker) {
-                                    Intent intent1 = new Intent(VetsNearbyActivity.this, VetDetailsActivity.class);
-                                    intent1.putExtra("title", markerTitle);
-                                    intent1.putExtra("city", city);
-                                    intent1.putExtra("street", street);
-                                    intent1.putExtra("streetNumber", streetNumber);
-                                    intent1.putExtra("phone", phone);
-                                    startActivity(intent1);
+                                    Vet markedVet = vetsFound.get(marker.getId());
+                                    Intent intent = new Intent(VetsNearbyActivity.this, VetDetailsActivity.class);
+                                    intent.putExtra("title", markedVet.title);
+                                    intent.putExtra("city", markedVet.city);
+                                    intent.putExtra("street", markedVet.street);
+                                    intent.putExtra("streetNumber", markedVet.streetNumber);
+                                    intent.putExtra("phone", markedVet.phone);
+                                    startActivity(intent);
                                     return true;
                                 }
                             });
-
-                        }
-                        if (resultsArray.length() > 0) {
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(),30));
                         }
                     }
                     catch (JSONException ex) {
