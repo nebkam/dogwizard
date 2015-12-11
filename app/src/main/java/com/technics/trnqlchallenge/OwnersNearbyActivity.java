@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapReadyCallback {
+    private Double latitude;
+    private Double longitude;
     private GoogleMap mMap;
     private Boolean isMapReady = false;
     private Boolean isMapSynced = false;
@@ -33,6 +35,10 @@ public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapRe
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Intent intent = getIntent();
+        latitude = intent.getDoubleExtra("latitude",0.00);
+        longitude = intent.getDoubleExtra("longitude",0.00);
     }
 
 
@@ -62,6 +68,8 @@ public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapRe
     public void syncOwners() {
         if (isMapReady && !isMapSynced && ownersNearby.size() > 0) {
             final LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
+            LatLng myLatLng = new LatLng(latitude,longitude);
+            boundsBuilder.include(myLatLng);
             for (int i = 0; i < ownersNearby.size(); i++) {
                 PersonEntry personEntry = ownersNearby.get(i);
                 LatLng latLng = new LatLng(personEntry.getLatitude(),personEntry.getLongitude());

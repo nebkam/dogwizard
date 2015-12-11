@@ -29,8 +29,8 @@ public class MainActivity extends SmartCompatActivity {
 
     public void showOwnersNearby(View View) {
         Intent intent = new Intent(MainActivity.this,OwnersNearbyActivity.class);
-        intent.putExtra("com.technics.trnqlchallenge.LAT", latitude);
-        intent.putExtra("com.technics.trnqlchallenge.LONG", longitude);
+        intent.putExtra("latitude", latitude);
+        intent.putExtra("longitude", longitude);
         startActivity(intent);
     }
 
