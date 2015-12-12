@@ -33,7 +33,7 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owners_nearby);
+        setContentView(R.layout.activity_vets_nearby);
         setTitle(R.string.vets_title);
 
         Intent intent = getIntent();
