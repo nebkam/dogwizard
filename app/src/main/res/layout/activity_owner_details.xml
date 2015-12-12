@@ -15,14 +15,33 @@
             android:id="@+id/dogNameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dog_name" />
+            android:text="@string/dog_name"
+            />
         <TextView
             android:id="@+id/dogName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
             android:layout_toRightOf="@id/dogNameLabel"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+        <TextView
+            android:id="@+id/dogBreedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dogNameLabel"
+            android:text="@string/dog_breed"
+            android:layout_marginTop="@dimen/settings_vertical_margin"
+            />
+        <TextView
+            android:id="@+id/dogBreed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:layout_toRightOf="@id/dogBreedLabel"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@id/dogName"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             />
     </RelativeLayout>
 </LinearLayout>

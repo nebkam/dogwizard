@@ -12,6 +12,7 @@ import com.parse.ParseUser;
 
 public class OwnerDetailsActivity extends AppCompatActivity {
     private TextView dogName;
+    private TextView dogBreed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +22,21 @@ public class OwnerDetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String userToken = intent.getStringExtra("userToken");
         dogName = (TextView)findViewById(R.id.dogName);
+        dogBreed = (TextView)findViewById(R.id.dogBreed);
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.getInBackground(userToken, new GetCallback<ParseUser>() {
             @Override
             public void done(ParseUser user, ParseException e) {
-                if (e == null && user != null && user.getString("dogName") != null) {
-                    dogName.setText(user.getString("dogName"));
-                } else {
-                    dogName.setText("Unknown");
+                dogName.setText("Anonymous");
+                dogBreed.setText("Unknown");
+                if (e == null && user != null) {
+                    if (user.getString("dogName") != null) {
+                        dogName.setText(user.getString("dogName"));
+                    }
+                    if (user.getString("dogBreed") != null) {
+                        dogBreed.setText(user.getString("dogBreed"));
+                    }
                 }
             }
         });
