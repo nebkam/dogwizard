@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,9 +17,11 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class OwnerDetailsActivity extends AppCompatActivity {
+    private String userToken;
     private TextView dogName;
     private TextView dogBreed;
     private ImageView dogPhoto;
+    private Button contactBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +29,11 @@ public class OwnerDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_owner_details);
 
         Intent intent = getIntent();
-        String userToken = intent.getStringExtra("userToken");
+        userToken = intent.getStringExtra("userToken");
         dogName = (TextView)findViewById(R.id.dogName);
         dogBreed = (TextView)findViewById(R.id.dogBreed);
         dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
+        contactBtn = (Button)findViewById(R.id.btn_contact);
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.getInBackground(userToken, new GetCallback<ParseUser>() {
@@ -46,8 +51,20 @@ public class OwnerDetailsActivity extends AppCompatActivity {
                         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
                         dogPhoto.setImageBitmap(bitmap);
                     }
+                    if (user.getBoolean("contact")) {
+                        contactBtn.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        contactBtn.setVisibility(View.GONE);
+                    }
                 }
             }
         });
+    }
+
+    public void contact(View view) {
+        Intent intent = new Intent(OwnerDetailsActivity.this,MessageActivity.class);
+        intent.putExtra("to",userToken);
+        startActivity(intent);
     }
 }
