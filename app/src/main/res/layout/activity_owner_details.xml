@@ -43,13 +43,13 @@
             android:layout_below="@id/dogName"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             />
-        <!--<ImageView-->
-            <!--android:id="@+id/dogPhoto"-->
-            <!--android:contentDescription="@string/this_dog_photo"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/dogBreedLabel"-->
-            <!--android:layout_marginTop="@dimen/activity_vertical_margin"-->
-            <!--/>-->
+        <ImageView
+            android:id="@+id/dogPhoto"
+            android:contentDescription="@string/this_dog_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dogBreedLabel"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            />
     </RelativeLayout>
 </LinearLayout>

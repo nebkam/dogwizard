@@ -17,7 +17,7 @@ import com.parse.ParseUser;
 public class OwnerDetailsActivity extends AppCompatActivity {
     private TextView dogName;
     private TextView dogBreed;
-//    private ImageView dogPhoto;
+    private ImageView dogPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class OwnerDetailsActivity extends AppCompatActivity {
         String userToken = intent.getStringExtra("userToken");
         dogName = (TextView)findViewById(R.id.dogName);
         dogBreed = (TextView)findViewById(R.id.dogBreed);
-//        dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
+        dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.getInBackground(userToken, new GetCallback<ParseUser>() {
@@ -41,11 +41,11 @@ public class OwnerDetailsActivity extends AppCompatActivity {
                     if (user.getString("dogBreed") != null) {
                         dogBreed.setText(user.getString("dogBreed"));
                     }
-//                    if (user.getString("photo") != null) {
-//                        byte[] bytes = Base64.decode(user.getString("photo"),Base64.DEFAULT);
-//                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-//                        dogPhoto.setImageBitmap(bitmap);
-//                    }
+                    if (user.getString("photo") != null) {
+                        byte[] bytes = Base64.decode(user.getString("photo"),Base64.DEFAULT);
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                        dogPhoto.setImageBitmap(bitmap);
+                    }
                 }
             }
         });
