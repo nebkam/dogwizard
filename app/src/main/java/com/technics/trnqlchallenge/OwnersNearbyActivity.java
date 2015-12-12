@@ -2,6 +2,7 @@ package com.technics.trnqlchallenge;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -40,7 +41,6 @@ public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapRe
         latitude = intent.getDoubleExtra("latitude",0.00);
         longitude = intent.getDoubleExtra("longitude",0.00);
     }
-
 
     /**
      * Manipulates the map once available.
@@ -93,5 +93,12 @@ public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapRe
             });
             isMapSynced = true;
         }
+    }
+
+    public void announce(View view){
+        Intent intent = new Intent(OwnersNearbyActivity.this,AnnouncementActivity.class);
+        intent.putExtra("latitude", latitude);
+        intent.putExtra("longitude", longitude);
+        startActivity(intent);
     }
 }
