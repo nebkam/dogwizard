@@ -3,6 +3,7 @@ package com.technics.trnqlchallenge;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -66,31 +67,37 @@ public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapRe
     }
 
     public void syncOwners() {
-        if (isMapReady && !isMapSynced && ownersNearby.size() > 0) {
+        if (isMapReady && !isMapSynced) {
             final LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
             LatLng myLatLng = new LatLng(latitude,longitude);
             boundsBuilder.include(myLatLng);
-            for (int i = 0; i < ownersNearby.size(); i++) {
-                PersonEntry personEntry = ownersNearby.get(i);
-                LatLng latLng = new LatLng(personEntry.getLatitude(),personEntry.getLongitude());
-                Marker marker = mMap.addMarker(new MarkerOptions().position(latLng));
-                boundsBuilder.include(latLng);
-                markers.put(marker.getId(),personEntry.getUserToken());
-            }
-            // Gets screen size
-            int width = getResources().getDisplayMetrics().widthPixels;
-            int height = getResources().getDisplayMetrics().heightPixels;
-            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(),width,height,30));
-            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(Marker marker) {
-                    String userToken = markers.get(marker.getId());
-                    Intent intent = new Intent(OwnersNearbyActivity.this,OwnerDetailsActivity.class);
-                    intent.putExtra("userToken",userToken);
-                    startActivity(intent);
-                    return true;
+
+            if (ownersNearby != null && ownersNearby.size() > 0) {
+                for (int i = 0; i < ownersNearby.size(); i++) {
+                    PersonEntry personEntry = ownersNearby.get(i);
+                    LatLng latLng = new LatLng(personEntry.getLatitude(),personEntry.getLongitude());
+                    Marker marker = mMap.addMarker(new MarkerOptions().position(latLng));
+                    boundsBuilder.include(latLng);
+                    markers.put(marker.getId(),personEntry.getUserToken());
                 }
-            });
+                // Gets screen size
+                int width = getResources().getDisplayMetrics().widthPixels;
+                int height = getResources().getDisplayMetrics().heightPixels;
+                mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(),width,height,30));
+                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker) {
+                        String userToken = markers.get(marker.getId());
+                        Intent intent = new Intent(OwnersNearbyActivity.this,OwnerDetailsActivity.class);
+                        intent.putExtra("userToken",userToken);
+                        startActivity(intent);
+                        return true;
+                    }
+                });
+            } else {
+                Toast.makeText(getApplicationContext(),R.string.no_owners_nearby,Toast.LENGTH_LONG).show();
+            }
+
             isMapSynced = true;
         }
     }

@@ -26,4 +26,5 @@
     <string name="this_dog_photo">A photo of this dog</string>
     <string name="phone_img_description">Phone call</string>
     <string name="your_message">Your Message</string>
+    <string name="no_owners_nearby">No Owners Nearby :(</string>
 </resources>
