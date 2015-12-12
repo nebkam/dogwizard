@@ -38,6 +38,8 @@ public class AnnouncementActivity extends AppCompatActivity {
                 announcement.saveInBackground();
 
                 Intent intent = new Intent(AnnouncementActivity.this, OwnersNearbyActivity.class);
+                intent.putExtra("latitude", latitude);
+                intent.putExtra("longitude", longitude);
                 startActivity(intent);
             }
         });
