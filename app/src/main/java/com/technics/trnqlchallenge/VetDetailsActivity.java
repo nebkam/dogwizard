@@ -1,8 +1,17 @@
 package com.technics.trnqlchallenge;
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+
 import android.content.res.Resources;
+import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class VetDetailsActivity extends AppCompatActivity {
@@ -18,7 +27,7 @@ public class VetDetailsActivity extends AppCompatActivity {
         String city = getIntent().getStringExtra("city");
         String street = getIntent().getStringExtra("street");
         String streetNumber = getIntent().getStringExtra("streetNumber");
-        String phone = getIntent().getStringExtra("phone");
+        final String phone = getIntent().getStringExtra("phone");
 
         TextView titleView = (TextView) findViewById(R.id.titleView);
         titleView.setText(title);
@@ -34,5 +43,24 @@ public class VetDetailsActivity extends AppCompatActivity {
 
         TextView addressView = (TextView) findViewById(R.id.addressView);
         addressView.setText(address);
+
+        ImageButton callButton = (ImageButton)findViewById(R.id.imageButton);
+
+        callButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                try {
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:" + phone.trim()));
+                    int permissionCheck = ContextCompat.checkSelfPermission(VetDetailsActivity.this, Manifest.permission.CALL_PHONE);
+
+                    startActivity(callIntent);
+
+
+                } catch (ActivityNotFoundException activityException) {
+                    Log.e("Calling a Phone Number", "Call failed", activityException);
+                }
+            }
+        });
     }
 }
