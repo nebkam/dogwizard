@@ -7,11 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 public class AnnouncementActivity extends AppCompatActivity {
+    private ParseUser user = ParseUser.getCurrentUser();
+    private Double latitude;
+    private Double longitude;
+    private EditText message;
+    private ParseObject announcement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +23,19 @@ public class AnnouncementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_announcement);
 
         Button announceButton = (Button) findViewById(R.id.announceButton);
-        final ParseUser user = ParseUser.getCurrentUser();
-        final String latitude = getIntent().getStringExtra("latitude");
-        final String longitude = getIntent().getStringExtra("longitude");
-        final EditText message = (EditText) findViewById(R.id.announceMessage);
-        final ParseObject announcements = new ParseObject("announcements");
+        latitude = getIntent().getDoubleExtra("latitude",0.00);
+        longitude = getIntent().getDoubleExtra("longitude",0.00);
+        message = (EditText) findViewById(R.id.announceMessage);
+        announcement = new ParseObject("Announcement");
 
         announceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                announcements.put("message", message.getText().toString());
-                announcements.put("latitude", latitude);
-                announcements.put("longitude", longitude);
-                announcements.put("userToken", user.getObjectId());
-                announcements.saveInBackground();
+                announcement.put("message", message.getText().toString());
+                announcement.put("latitude", latitude);
+                announcement.put("longitude", longitude);
+                announcement.put("userToken", user.getObjectId());
+                announcement.saveInBackground();
 
                 Intent intent = new Intent(AnnouncementActivity.this, OwnersNearbyActivity.class);
                 startActivity(intent);
