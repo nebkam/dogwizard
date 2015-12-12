@@ -31,4 +31,10 @@
     <string name="send">Send</string>
     <string name="err_message">Please enter your message</string>
     <string name="message_sent">Your message was sent!</string>
+    <string name="pref_contact_label_on">Allow Contact</string>
+    <string name="pref_contact_summary_on">Dog owners nearby can message you</string>
+    <string name="pref_contact_label_off">Block Contact</string>
+    <string name="pref_contact_summary_off">Dog owners nearby can\'t message you</string>
+    <string name="pref_walk_reminder_label">Dog Walk Reminder</string>
+    <string name="pref_walk_reminder_summary">Warns you about upcoming bad weather</string>
 </resources>
