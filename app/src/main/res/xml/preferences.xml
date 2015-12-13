@@ -16,5 +16,6 @@
     <EditTextPreference
         android:key="pref_name"
         android:title="@string/your_dog_name"
+        android:summary=""
         />
 </PreferenceScreen>
