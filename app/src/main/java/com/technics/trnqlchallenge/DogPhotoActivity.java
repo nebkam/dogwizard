@@ -1,5 +1,6 @@
 package com.technics.trnqlchallenge;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -11,15 +12,21 @@ import android.widget.ImageView;
 
 import com.parse.ParseUser;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 public class DogPhotoActivity extends AppCompatActivity {
+    private static final int SELECT_PHOTO = 100;
+    private ImageView dogPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_photo);
 
+        dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
+
         ParseUser user = ParseUser.getCurrentUser();
-        ImageView dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
         if (user.getString("photo").equals("")) {
             Button btn = (Button)findViewById(R.id.btn_switch);
             btn.setText(R.string.btn_set_photo);
@@ -30,6 +37,24 @@ public class DogPhotoActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK) {
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(intent.getData());
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                dogPhoto.setImageBitmap(bitmap);
+            } catch (IOException ex){
+                ex.printStackTrace();
+            }
+        }
+    }
+
     public void changePhoto(View view) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, SELECT_PHOTO);
     }
 }
