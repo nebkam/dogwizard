@@ -24,20 +24,13 @@
         style="?android:buttonBarStyle"
         >
         <Button
-            android:id="@+id/btn_remove"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/btn_remove_photo"
-            style="?android:attr/borderlessButtonStyle"
-            />
-        <Button
             android:id="@+id/btn_switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/btn_switch_photo"
             style="?android:attr/borderlessButtonStyle"
+            android:onClick="changePhoto"
             />
     </LinearLayout>
 </LinearLayout>
