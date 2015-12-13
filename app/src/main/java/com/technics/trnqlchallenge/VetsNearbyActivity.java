@@ -3,6 +3,7 @@ package com.technics.trnqlchallenge;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -97,6 +98,8 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                                     return true;
                                 }
                             });
+                        } else {
+                            Toast.makeText(getApplicationContext(), R.string.no_vets_nearby, Toast.LENGTH_LONG).show();
                         }
                     }
                     catch (JSONException ex) {

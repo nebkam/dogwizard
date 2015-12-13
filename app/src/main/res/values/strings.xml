@@ -30,6 +30,7 @@
     <string name="your_message">Your Message</string>
     <string name="announce_button">Announce</string>
     <string name="no_owners_nearby">No Owners Nearby :(</string>
+    <string name="no_vets_nearby">No Vets Nearby :(</string>
     <string name="send">Send</string>
     <string name="err_message">Please enter your message</string>
     <string name="message_sent">Your message was sent!</string>
