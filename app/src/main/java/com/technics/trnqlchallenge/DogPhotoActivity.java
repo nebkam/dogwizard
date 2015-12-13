@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.parse.ParseUser;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -42,9 +43,19 @@ public class DogPhotoActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK) {
             try {
+                //Sync UI
                 InputStream inputStream = getContentResolver().openInputStream(intent.getData());
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                 dogPhoto.setImageBitmap(bitmap);
+                //Encode to string
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                byte[] bytes = byteArrayOutputStream.toByteArray();
+                String photoAsString = Base64.encodeToString(bytes, Base64.DEFAULT);
+                //Save to Parse
+                ParseUser user = ParseUser.getCurrentUser();
+                user.put("photo", photoAsString);
+                user.saveInBackground();
             } catch (IOException ex){
                 ex.printStackTrace();
             }

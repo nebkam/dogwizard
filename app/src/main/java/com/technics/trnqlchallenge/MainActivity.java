@@ -47,7 +47,7 @@ public class MainActivity extends SmartCompatActivity {
     }
 
     public void showSettings(View View) {
-        Intent intent = new Intent(MainActivity.this, Settings2Activity.class);
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
     }
 
