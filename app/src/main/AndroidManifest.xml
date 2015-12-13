@@ -65,7 +65,8 @@
         <activity android:name=".OwnerDetailsActivity" />
         <activity android:name=".AnnouncementActivity" />
         <activity android:name=".MessageActivity" />
-        <activity android:name=".Settings2Activity"></activity>
+        <activity android:name=".Settings2Activity" />
+        <activity android:name=".DogPhotoActivity"></activity>
     </application>
 
 </manifest>

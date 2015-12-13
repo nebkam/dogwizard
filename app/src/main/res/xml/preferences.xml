@@ -23,4 +23,12 @@
         android:title="@string/your_dog_breed"
         android:summary=""
         />
+    <Preference
+        android:key="pref_photo"
+        android:title="@string/your_dog_photo"
+        >
+        <intent android:action="android.intent.action.VIEW"
+            android:targetPackage="com.technics.trnqlchallenge"
+            android:targetClass="com.technics.trnqlchallenge.DogPhotoActivity" />
+    </Preference>
 </PreferenceScreen>
