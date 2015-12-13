@@ -18,4 +18,9 @@
         android:title="@string/your_dog_name"
         android:summary=""
         />
+    <EditTextPreference
+        android:key="pref_breed"
+        android:title="@string/your_dog_breed"
+        android:summary=""
+        />
 </PreferenceScreen>
