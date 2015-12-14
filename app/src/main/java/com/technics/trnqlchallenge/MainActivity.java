@@ -62,4 +62,11 @@ public class MainActivity extends SmartCompatActivity {
         Intent intent = new Intent(MainActivity.this,MessageInboxActivity.class);
         startActivity(intent);
     }
+
+    public void showAnnouncements(View view) {
+        Intent intent = new Intent(MainActivity.this,AnnouncementsNearbyActivity.class);
+        intent.putExtra("com.technics.trnqlchallenge.LAT", latitude);
+        intent.putExtra("com.technics.trnqlchallenge.LONG", longitude);
+        startActivity(intent);
+    }
 }
