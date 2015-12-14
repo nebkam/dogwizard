@@ -8,23 +8,23 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SendAnnouncementActivity">
-
-    <EditText
-        android:id="@+id/announceMessage"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/label"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine|textCapSentences|textLongMessage"
-        android:hint="@string/your_message"
-        android:minLines="4" />
-
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine|textCapSentences|textLongMessage"
+            android:hint="@string/your_message"
+            />
+    </android.support.design.widget.TextInputLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/announce_button"
-        android:layout_below="@+id/announceMessage"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/announceButton"/>
-
-
-
+        android:layout_below="@id/label"
+        android:layout_alignRight="@+id/label"
+        />
 </RelativeLayout>

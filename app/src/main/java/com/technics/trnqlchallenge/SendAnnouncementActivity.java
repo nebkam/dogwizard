@@ -22,27 +22,27 @@ public class SendAnnouncementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_announcement);
 
-        Button announceButton = (Button) findViewById(R.id.announceButton);
-        latitude = getIntent().getDoubleExtra("latitude",0.00);
-        longitude = getIntent().getDoubleExtra("longitude",0.00);
-        message = (EditText) findViewById(R.id.announceMessage);
-        announcement = new ParseObject("Announcement");
-
-        announceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                announcement.put("message", message.getText().toString());
-                announcement.put("latitude", latitude);
-                announcement.put("longitude", longitude);
-                announcement.put("userToken", user.getObjectId());
-                announcement.saveInBackground();
-
-                Intent intent = new Intent(SendAnnouncementActivity.this, OwnersNearbyActivity.class);
-                intent.putExtra("latitude", latitude);
-                intent.putExtra("longitude", longitude);
-                startActivity(intent);
-            }
-        });
+//        Button announceButton = (Button) findViewById(R.id.announceButton);
+//        latitude = getIntent().getDoubleExtra("latitude",0.00);
+//        longitude = getIntent().getDoubleExtra("longitude",0.00);
+//        message = (EditText) findViewById(R.id.announceMessage);
+//        announcement = new ParseObject("Announcement");
+//
+//        announceButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                announcement.put("message", message.getText().toString());
+//                announcement.put("latitude", latitude);
+//                announcement.put("longitude", longitude);
+//                announcement.put("userToken", user.getObjectId());
+//                announcement.saveInBackground();
+//
+//                Intent intent = new Intent(SendAnnouncementActivity.this, OwnersNearbyActivity.class);
+//                intent.putExtra("latitude", latitude);
+//                intent.putExtra("longitude", longitude);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 }
