@@ -33,7 +33,9 @@
     <string name="no_vets_nearby">No Vets Nearby :(</string>
     <string name="send">Send</string>
     <string name="err_message">Please enter your message</string>
-    <string name="message_sent">Your message was sent!</string>
+    <string name="err_location">Please turn on your location</string>
+    <string name="message_sent">Message was sent!</string>
+    <string name="announcement_sent">Message announced!</string>
     <string name="pref_contact_label_on">Allow Contact</string>
     <string name="pref_contact_summary_on">Dog owners nearby can message you</string>
     <string name="pref_contact_label_off">Block Contact</string>

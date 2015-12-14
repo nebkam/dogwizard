@@ -9,11 +9,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SendAnnouncementActivity">
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/label"
+        android:id="@+id/announcementBodyLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/body"
+            android:id="@+id/announcementBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine|textCapSentences|textLongMessage"
@@ -24,7 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/announce_button"
-        android:layout_below="@id/label"
-        android:layout_alignRight="@+id/label"
+        android:layout_below="@id/announcementBodyLabel"
+        android:layout_alignRight="@+id/announcementBodyLabel"
+        android:onClick="sendAnnouncement"
         />
 </RelativeLayout>
