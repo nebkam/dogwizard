@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-public class AnnouncementActivity extends AppCompatActivity {
+public class SendAnnouncementActivity extends AppCompatActivity {
     private ParseUser user = ParseUser.getCurrentUser();
     private Double latitude;
     private Double longitude;
@@ -20,7 +20,7 @@ public class AnnouncementActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_announcement);
+        setContentView(R.layout.activity_send_announcement);
 
         Button announceButton = (Button) findViewById(R.id.announceButton);
         latitude = getIntent().getDoubleExtra("latitude",0.00);
@@ -37,7 +37,7 @@ public class AnnouncementActivity extends AppCompatActivity {
                 announcement.put("userToken", user.getObjectId());
                 announcement.saveInBackground();
 
-                Intent intent = new Intent(AnnouncementActivity.this, OwnersNearbyActivity.class);
+                Intent intent = new Intent(SendAnnouncementActivity.this, OwnersNearbyActivity.class);
                 intent.putExtra("latitude", latitude);
                 intent.putExtra("longitude", longitude);
                 startActivity(intent);

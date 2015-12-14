@@ -103,7 +103,7 @@ public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapRe
     }
 
     public void announce(View view){
-        Intent intent = new Intent(OwnersNearbyActivity.this,AnnouncementActivity.class);
+        Intent intent = new Intent(OwnersNearbyActivity.this,SendAnnouncementActivity.class);
         intent.putExtra("latitude", latitude);
         intent.putExtra("longitude", longitude);
         startActivity(intent);
