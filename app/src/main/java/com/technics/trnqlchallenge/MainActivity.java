@@ -57,4 +57,9 @@ public class MainActivity extends SmartCompatActivity {
         intent.putExtra("com.technics.trnqlchallenge.LONG", longitude);
         startActivity(intent);
     }
+
+    public void showMessages(View view) {
+        Intent intent = new Intent(MainActivity.this,MessageInboxActivity.class);
+        startActivity(intent);
+    }
 }
