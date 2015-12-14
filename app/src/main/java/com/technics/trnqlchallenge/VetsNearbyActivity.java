@@ -38,11 +38,9 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
         setTitle(R.string.vets_title);
 
         Intent intent = getIntent();
-//        latitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LAT",0);
-//        longitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LONG",0);
+        latitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LAT",0);
+        longitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LONG",0);
 
-        latitude = 46.10027780;
-        longitude = 19.66555560;
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
