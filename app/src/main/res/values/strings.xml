@@ -47,4 +47,6 @@
     <string name="message_from_label">From:</string>
     <string name="message_body_label">Message:</string>
     <string name="reply_btn">Reply</string>
+    <string name="inbox_title">Inbox</string>
+    <string name="message_title">Message</string>
 </resources>

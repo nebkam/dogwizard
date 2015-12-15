@@ -25,6 +25,7 @@ public class ViewMessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.message_title);
         setContentView(R.layout.activity_view_message);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");

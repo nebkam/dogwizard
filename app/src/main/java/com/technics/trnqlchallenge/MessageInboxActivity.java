@@ -3,32 +3,43 @@ package com.technics.trnqlchallenge;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.parse.ParseUser;
 
 public class MessageInboxActivity extends AppCompatActivity {
-
+    public String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_inbox);
-
-        final ParseQueryAdapter<ParseObject> adapter = new ParseQueryAdapter<ParseObject>(this,"Message");
+        setTitle(R.string.inbox_title);
+        final ParseUser user = ParseUser.getCurrentUser();
+        final ParseQueryAdapter<ParseObject> adapter =
+                new ParseQueryAdapter<ParseObject>(this, new ParseQueryAdapter.QueryFactory<ParseObject>() {
+                    public ParseQuery<ParseObject> create() {
+                        // Here we can configure a ParseQuery to our heart's desire.
+                        ParseQuery query = new ParseQuery("Message");
+                        query.whereEqualTo("to",user.getObjectId());
+                        return query;
+                    }
+                });
         adapter.setTextKey("body");
 
-        ListView messageList = (ListView)findViewById(R.id.messageList);
+        ListView messageList = (ListView) findViewById(R.id.messageList);
         messageList.setAdapter(adapter);
 
         messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                ParseUser friend = mAdapter.getItem(position);
                   ParseObject message = adapter.getItem(position);
 
                 Intent intent = new Intent(MessageInboxActivity.this,ViewMessageActivity.class);
