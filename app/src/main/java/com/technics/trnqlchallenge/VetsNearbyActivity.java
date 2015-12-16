@@ -72,12 +72,19 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                             final String street = obj.getString("street");
                             final String streetNumber = obj.getString("streetNumber");
                             final String phone = obj.getString("phone");
+                            final String website;
+                            if (obj.has("website")){
+                               website = obj.getString("website");
+                            }
+                            else{
+                                website = "";
+                            }
 
                             LatLng latLng = new LatLng(markerLatitude, markerLongitude);
                             Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(markerTitle));
                             boundsBuilder.include(latLng);
 
-                            Vet vetFound = new Vet(markerTitle,city,street,streetNumber,phone);
+                            Vet vetFound = new Vet(markerTitle,city,street,streetNumber,phone,website);
                             vetsFound.put(marker.getId(), vetFound);
                         }
                         if (resultsArray.length() > 0) {
@@ -92,6 +99,7 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                                     intent.putExtra("street", markedVet.street);
                                     intent.putExtra("streetNumber", markedVet.streetNumber);
                                     intent.putExtra("phone", markedVet.phone);
+                                    intent.putExtra("website", markedVet.website);
                                     startActivity(intent);
                                     return true;
                                 }
