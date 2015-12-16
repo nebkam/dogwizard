@@ -91,4 +91,16 @@
         android:layout_alignTop="@+id/addressView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text=""
+        android:id="@+id/websiteLink"
+        android:autoLink="web"
+        android:layout_below="@+id/imageButton"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toLeftOf="@+id/imageButton"
+        android:layout_toStartOf="@+id/imageButton" />
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -31,22 +32,27 @@ public class MessageInboxActivity extends AppCompatActivity {
                         return query;
                     }
                 });
-        adapter.setTextKey("body");
+        if (adapter.isEmpty()){
+            Toast.makeText(getApplicationContext(), R.string.no_messages, Toast.LENGTH_LONG).show();
+        }
+        else{
+            adapter.setTextKey("body");
 
-        ListView messageList = (ListView) findViewById(R.id.messageList);
-        messageList.setAdapter(adapter);
+            ListView messageList = (ListView) findViewById(R.id.messageList);
+            messageList.setAdapter(adapter);
 
-        messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                  ParseObject message = adapter.getItem(position);
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    ParseObject message = adapter.getItem(position);
 
-                Intent intent = new Intent(MessageInboxActivity.this,ViewMessageActivity.class);
-                intent.putExtra("body", message.getString("body"));
-                intent.putExtra("from", message.getString("from"));
-                startActivity(intent);
-            }
-        });
+                    Intent intent = new Intent(MessageInboxActivity.this,ViewMessageActivity.class);
+                    intent.putExtra("body", message.getString("body"));
+                    intent.putExtra("from", message.getString("from"));
+                    startActivity(intent);
+                }
+            });
+        }
     }
 }

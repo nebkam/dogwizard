@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -27,6 +28,7 @@ public class VetDetailsActivity extends AppCompatActivity {
         String city = getIntent().getStringExtra("city");
         String street = getIntent().getStringExtra("street");
         String streetNumber = getIntent().getStringExtra("streetNumber");
+        String website = getIntent().getStringExtra("website");
         final String phone = getIntent().getStringExtra("phone");
 
         TextView titleView = (TextView) findViewById(R.id.titleView);
@@ -44,8 +46,13 @@ public class VetDetailsActivity extends AppCompatActivity {
         TextView addressView = (TextView) findViewById(R.id.addressView);
         addressView.setText(address);
 
-        ImageButton callButton = (ImageButton)findViewById(R.id.imageButton);
+        if (!website.isEmpty()){
+            TextView websiteLink = (TextView) findViewById(R.id.websiteLink);
+            websiteLink.setText(website);
+        }
 
+
+        ImageButton callButton = (ImageButton)findViewById(R.id.imageButton);
         callButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
