@@ -9,14 +9,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends SmartCompatActivity {
     private Double latitude = 37.441883;
     private Double longitude = -122.143019;
-    private List<PlaceEntry> placesFound;
-
+    private ArrayList<PlaceEntry> placesFound = new ArrayList<>();
+    private ArrayList<String> placesRated = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +88,22 @@ public class MainActivity extends SmartCompatActivity {
 
     @Override
     public void smartPlacesChange(List<PlaceEntry> places) {
-        placesFound = places;
+        for (PlaceEntry place : places){
+            //because of the `cid` param, use Google Maps URL as a unique identifier
+            if (place.getGoogleMapsUrl() != null
+                    && !placesRated.contains(place.getGoogleMapsUrl())) {
+                placesFound.add(place);
+            }
+        }
+        nextPlace();
+    }
+
+    public void nextPlace() {
+        if (placesFound.size() > 0) {
+            PlaceEntry randomPlace = placesFound.get(new Random().nextInt(placesFound.size()));
+            TextView placeView = (TextView)findViewById(R.id.placeText);
+            placeView.setText(randomPlace.getName());
+        }
     }
 
     public void showOwnersNearby(View View) {
