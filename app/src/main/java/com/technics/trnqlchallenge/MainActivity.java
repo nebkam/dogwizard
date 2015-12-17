@@ -1,5 +1,6 @@
 package com.technics.trnqlchallenge;
 
+import com.parse.ParseUser;
 import com.trnql.smart.base.SmartCompatActivity;
 import com.trnql.smart.location.LocationEntry;
 import com.trnql.smart.places.PlaceEntry;
@@ -9,8 +10,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,7 +22,12 @@ import java.util.List;
 public class MainActivity extends SmartCompatActivity {
     private Double latitude = 37.441883;
     private Double longitude = -122.143019;
+    private CardView placeCard;
+    private ImageView placePhoto;
+    private TextView placeName;
+    private TextView placeDistance;
     private List<PlaceEntry> placesFound = new ArrayList<>();
+    private PlaceEntry currentPlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +37,10 @@ public class MainActivity extends SmartCompatActivity {
         if (isFirstRun()) {
             showSplash();
         }
-
+        placeCard = (CardView)findViewById(R.id.placeCard);
+        placePhoto = (ImageView)findViewById(R.id.placePhoto);
+        placeName = (TextView)findViewById(R.id.placeName);
+        placeDistance = (TextView)findViewById(R.id.placeDistance);
         getPlacesManager().setTypeFilters(
                 PlaceType.AIRPORT,
                 PlaceType.AMUSEMENT_PARK,
@@ -94,9 +103,9 @@ public class MainActivity extends SmartCompatActivity {
     public void smartPlacesChange(List<PlaceEntry> places) {
         Collections.sort(places, new Comparator<PlaceEntry>() {
             @Override
-            public int compare(PlaceEntry lhs, PlaceEntry rhs) {
-                int leftDistance = lhs.getDistanceFromUser();
-                int rightDistance = rhs.getDistanceFromUser();
+            public int compare(PlaceEntry left, PlaceEntry right) {
+                int leftDistance = left.getDistanceFromUser();
+                int rightDistance = right.getDistanceFromUser();
                 if (leftDistance == rightDistance) {
                     return 0;
                 } else {
@@ -109,26 +118,30 @@ public class MainActivity extends SmartCompatActivity {
             }
         });
         placesFound = places;
+//pick closest
+renderCard(placesFound.get(0));
+currentPlace = placesFound.get(0);
     }
 
-//    public void nextPlace() {
-//        CardView placeCard = (CardView)findViewById(R.id.placeCard);
-//        if (placesFound.size() > 0) {
-//            placeCard.setVisibility(View.VISIBLE);
-//            PlaceEntry randomPlace = placesFound.get(new Random().nextInt(placesFound.size()));
-//
-//            TextView placeName = (TextView)findViewById(R.id.placeName);
-//            placeName.setText(randomPlace.getName());
-//
-//            TextView placeAddress = (TextView)findViewById(R.id.placeAddress);
-//            placeAddress.setText(randomPlace.getAddress());
-//        } else {
-//            placeCard.setVisibility(View.GONE);
-//        }
-//    }
-//
+    private void renderCard(PlaceEntry place){
+        if (place.getImages().size() > 0) {
+            placePhoto.setImageBitmap(place.getImages().get(0));
+        }
+        placeName.setText(place.getName());
+
+        int distance = place.getDistanceFromUser();
+        if (distance > 0) {
+            placeDistance.setText(String.valueOf(distance)+"m");
+            placeDistance.setVisibility(View.VISIBLE);
+        } else {
+            placeDistance.setVisibility(View.GONE);
+        }
+    }
+
     public void skip(View view) {
-//        nextPlace();
+        ParseUser user = ParseUser.getCurrentUser();
+        user.addUnique("skipped",currentPlace.getPlaceId());
+        user.saveInBackground();
     }
 
     public void showOwnersNearby(View View) {

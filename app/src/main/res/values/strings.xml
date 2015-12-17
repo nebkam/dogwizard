@@ -52,4 +52,5 @@
     <string name="inbox_title">Inbox</string>
     <string name="message_title">Message</string>
     <string name="no_messages">There is no messages for you :(</string>
+    <string name="desc_place_photo">A photo of this place</string>
 </resources>
