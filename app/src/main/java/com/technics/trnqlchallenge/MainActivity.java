@@ -8,6 +8,7 @@ import com.trnql.smart.places.PlaceType;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class MainActivity extends SmartCompatActivity {
     private Double longitude = -122.143019;
     private ArrayList<PlaceEntry> placesFound = new ArrayList<>();
     private ArrayList<String> placesRated = new ArrayList<>();
+    private String placeShownGoogleMapUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,11 +101,23 @@ public class MainActivity extends SmartCompatActivity {
     }
 
     public void nextPlace() {
+        CardView placeCard = (CardView)findViewById(R.id.placeCard);
         if (placesFound.size() > 0) {
+            placeCard.setVisibility(View.VISIBLE);
             PlaceEntry randomPlace = placesFound.get(new Random().nextInt(placesFound.size()));
-            TextView placeView = (TextView)findViewById(R.id.placeText);
-            placeView.setText(randomPlace.getName());
+
+            TextView placeName = (TextView)findViewById(R.id.placeName);
+            placeName.setText(randomPlace.getName());
+
+            TextView placeAddress = (TextView)findViewById(R.id.placeAddress);
+            placeAddress.setText(randomPlace.getAddress());
+        } else {
+            placeCard.setVisibility(View.GONE);
         }
+    }
+
+    public void skip(View view) {
+        nextPlace();
     }
 
     public void showOwnersNearby(View View) {
