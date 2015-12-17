@@ -9,19 +9,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 
 public class MainActivity extends SmartCompatActivity {
     private Double latitude = 37.441883;
     private Double longitude = -122.143019;
-    private ArrayList<PlaceEntry> placesFound = new ArrayList<>();
-    private ArrayList<String> placesRated = new ArrayList<>();
-    private String placeShownGoogleMapUrl;
+    private List<PlaceEntry> placesFound = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class MainActivity extends SmartCompatActivity {
         if (isFirstRun()) {
             showSplash();
         }
+
         getPlacesManager().setTypeFilters(
                 PlaceType.AIRPORT,
                 PlaceType.AMUSEMENT_PARK,
@@ -80,6 +81,7 @@ public class MainActivity extends SmartCompatActivity {
                 PlaceType.UNIVERSITY,
                 PlaceType.ZOO
         );
+        getPlacesManager().setIncludeImages(true);
     }
 
     @Override
@@ -90,34 +92,43 @@ public class MainActivity extends SmartCompatActivity {
 
     @Override
     public void smartPlacesChange(List<PlaceEntry> places) {
-        for (PlaceEntry place : places){
-            //because of the `cid` param, use Google Maps URL as a unique identifier
-            if (place.getGoogleMapsUrl() != null
-                    && !placesRated.contains(place.getGoogleMapsUrl())) {
-                placesFound.add(place);
+        Collections.sort(places, new Comparator<PlaceEntry>() {
+            @Override
+            public int compare(PlaceEntry lhs, PlaceEntry rhs) {
+                int leftDistance = lhs.getDistanceFromUser();
+                int rightDistance = rhs.getDistanceFromUser();
+                if (leftDistance == rightDistance) {
+                    return 0;
+                } else {
+                    if (leftDistance > rightDistance) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                }
             }
-        }
-        nextPlace();
+        });
+        placesFound = places;
     }
 
-    public void nextPlace() {
-        CardView placeCard = (CardView)findViewById(R.id.placeCard);
-        if (placesFound.size() > 0) {
-            placeCard.setVisibility(View.VISIBLE);
-            PlaceEntry randomPlace = placesFound.get(new Random().nextInt(placesFound.size()));
-
-            TextView placeName = (TextView)findViewById(R.id.placeName);
-            placeName.setText(randomPlace.getName());
-
-            TextView placeAddress = (TextView)findViewById(R.id.placeAddress);
-            placeAddress.setText(randomPlace.getAddress());
-        } else {
-            placeCard.setVisibility(View.GONE);
-        }
-    }
-
+//    public void nextPlace() {
+//        CardView placeCard = (CardView)findViewById(R.id.placeCard);
+//        if (placesFound.size() > 0) {
+//            placeCard.setVisibility(View.VISIBLE);
+//            PlaceEntry randomPlace = placesFound.get(new Random().nextInt(placesFound.size()));
+//
+//            TextView placeName = (TextView)findViewById(R.id.placeName);
+//            placeName.setText(randomPlace.getName());
+//
+//            TextView placeAddress = (TextView)findViewById(R.id.placeAddress);
+//            placeAddress.setText(randomPlace.getAddress());
+//        } else {
+//            placeCard.setVisibility(View.GONE);
+//        }
+//    }
+//
     public void skip(View view) {
-        nextPlace();
+//        nextPlace();
     }
 
     public void showOwnersNearby(View View) {
