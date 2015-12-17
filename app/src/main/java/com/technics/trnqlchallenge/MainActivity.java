@@ -1,5 +1,7 @@
 package com.technics.trnqlchallenge;
 
+import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.trnql.smart.base.SmartCompatActivity;
 import com.trnql.smart.location.LocationEntry;
@@ -118,23 +120,48 @@ public class MainActivity extends SmartCompatActivity {
             }
         });
         placesFound = places;
-//pick closest
-renderCard(placesFound.get(0));
-currentPlace = placesFound.get(0);
+        nextCard();
     }
 
-    private void renderCard(PlaceEntry place){
-        if (place.getImages().size() > 0) {
-            placePhoto.setImageBitmap(place.getImages().get(0));
-        }
-        placeName.setText(place.getName());
+    public void nextCard(){
+        ParseUser user = ParseUser.getCurrentUser();
 
-        int distance = place.getDistanceFromUser();
-        if (distance > 0) {
-            placeDistance.setText(String.valueOf(distance)+"m");
-            placeDistance.setVisibility(View.VISIBLE);
+        List skipped = user.getList("skipped");
+        List markedFriendly = user.getList("markedFriendly");
+        PlaceEntry placeFound = null;
+
+        for (PlaceEntry place : placesFound) {
+            if ((skipped == null || !skipped.contains(place.getPlaceId()))
+                    && (markedFriendly == null || !markedFriendly.contains(place.getPlaceId()))) {
+                placeFound = place;
+                break;
+            }
+        }
+
+        currentPlace = placeFound;
+        renderCard();
+    }
+
+    private void renderCard(){
+        if (currentPlace == null) {
+            placeCard.setVisibility(View.GONE);
         } else {
-            placeDistance.setVisibility(View.GONE);
+            if (currentPlace.getImages().size() > 0) {
+                placePhoto.setImageBitmap(currentPlace.getImages().get(0));
+                placePhoto.setVisibility(View.VISIBLE);
+            } else {
+                placePhoto.setVisibility(View.GONE);
+            }
+            placeName.setText(currentPlace.getName());
+
+            int distance = currentPlace.getDistanceFromUser();
+            if (distance > 0) {
+                placeDistance.setText(String.valueOf(distance)+"m");
+                placeDistance.setVisibility(View.VISIBLE);
+            } else {
+                placeDistance.setVisibility(View.GONE);
+            }
+            placeCard.setVisibility(View.VISIBLE);
         }
     }
 
@@ -142,6 +169,31 @@ currentPlace = placesFound.get(0);
         ParseUser user = ParseUser.getCurrentUser();
         user.addUnique("skipped",currentPlace.getPlaceId());
         user.saveInBackground();
+
+        nextCard();
+    }
+
+    public void markAsFriendly(View view) {
+        ParseUser user = ParseUser.getCurrentUser();
+        user.addUnique("markedFriendly", currentPlace.getPlaceId());
+        user.saveInBackground();
+
+        ParseObject friendlyPlace = new ParseObject("FriendlyPlace");
+        friendlyPlace.put("name",currentPlace.getName());
+        if (currentPlace.getAddress() != null) {
+            friendlyPlace.put("address",currentPlace.getAddress());
+        }
+        if (currentPlace.getIntlPhoneNumber() != null) {
+            friendlyPlace.put("phone",currentPlace.getIntlPhoneNumber());
+        }
+        if (currentPlace.getWebsite() != null) {
+            friendlyPlace.put("website",currentPlace.getWebsite());
+        }
+        ParseGeoPoint location = new ParseGeoPoint(currentPlace.getLatitude(),currentPlace.getLongitude());
+        friendlyPlace.put("location",location);
+        friendlyPlace.saveInBackground();
+
+        nextCard();
     }
 
     public void showOwnersNearby(View View) {

@@ -74,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/btn_mark_friendly"
                     style="?android:attr/borderlessButtonStyle"
+                    android:onClick="markAsFriendly"
                     />
             </LinearLayout>
         </RelativeLayout>
