@@ -10,6 +10,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.parse.GetCallback;
@@ -35,10 +36,11 @@ public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMa
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-//        final LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
+        final LatLngBounds.Builder boundsBuilder = LatLngBounds.builder();
+        boundsBuilder.include(new LatLng(latitude,longitude));
 
         ParseGeoPoint point = new ParseGeoPoint(latitude,longitude);
-        System.out.println(point);
+//        System.out.println(point);
         ParseQuery<ParseObject> query = ParseQuery.getQuery("FriendlyPlace");
         query.whereWithinKilometers("location",point,8.00).orderByDescending("createdAt");
         query.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -46,8 +48,8 @@ public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMa
                 if (object == null) {
                     Toast.makeText(getApplicationContext(), R.string.no_friendly_places_nearby, Toast.LENGTH_LONG).show();
                 } else {
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 30));
-                    System.out.println(object);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 30));
+//                    System.out.println(object);
                 }
             }
         });
