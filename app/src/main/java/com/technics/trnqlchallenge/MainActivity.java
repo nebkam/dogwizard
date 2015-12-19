@@ -190,7 +190,7 @@ public class MainActivity extends SmartCompatActivity {
             friendlyPlace.put("website",currentPlace.getWebsite());
         }
         ParseGeoPoint location = new ParseGeoPoint(currentPlace.getLatitude(),currentPlace.getLongitude());
-        friendlyPlace.put("location",location);
+        friendlyPlace.put("location", location);
         friendlyPlace.saveInBackground();
 
         nextCard();
@@ -234,6 +234,13 @@ public class MainActivity extends SmartCompatActivity {
 
     public void showAnnouncements(View view) {
         Intent intent = new Intent(MainActivity.this,AnnouncementsNearbyActivity.class);
+        intent.putExtra("com.technics.trnqlchallenge.LAT", latitude);
+        intent.putExtra("com.technics.trnqlchallenge.LONG", longitude);
+        startActivity(intent);
+    }
+
+    public void showDogFriendlyPlaces (View view) {
+        Intent intent = new Intent(MainActivity.this, DogFriendlyPlacesActivity.class);
         intent.putExtra("com.technics.trnqlchallenge.LAT", latitude);
         intent.putExtra("com.technics.trnqlchallenge.LONG", longitude);
         startActivity(intent);

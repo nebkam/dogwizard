@@ -68,7 +68,8 @@
         <activity android:name=".DogPhotoActivity" />
         <activity android:name=".MessageInboxActivity" />
         <activity android:name=".AnnouncementsNearbyActivity" />
-        <activity android:name=".ViewMessageActivity"></activity>
+        <activity android:name=".ViewMessageActivity" />
+        <activity android:name=".DogFriendlyPlacesActivity"></activity>
     </application>
 
 </manifest>

@@ -11,7 +11,7 @@
     <string name="skip">Skip</string>
     <string name="show_owners_btn">Dog Owners</string>
     <string name="show_vets_btn">Vets</string>
-    <string name="show_places_btn">Pet Friendly Places</string>
+    <string name="show_places_btn">Dog Friendly Places</string>
     <string name="title_activity_maps">Map</string>
     <string name="picture_upload_btn">Choose picture of your dog</string>
     <string name="settings_btn">Settings</string>
@@ -31,6 +31,7 @@
     <string name="announce_button">Announce to all</string>
     <string name="no_owners_nearby">No Owners Nearby :(</string>
     <string name="no_vets_nearby">No Vets Nearby :(</string>
+    <string name="no_friendly_places_nearby">No Dog Friendly Places Nearby :(</string>
     <string name="send">Send</string>
     <string name="err_message">Please enter your message</string>
     <string name="err_location">Please turn on your location</string>
@@ -53,4 +54,5 @@
     <string name="message_title">Message</string>
     <string name="no_messages">There is no messages for you :(</string>
     <string name="desc_place_photo">A photo of this place</string>
+    <string name="dog_friendly_places">Dog friendly places</string>
 </resources>
