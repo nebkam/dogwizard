@@ -22,8 +22,10 @@
     <string name="switch_walk_reminder">Dog Walk Reminder</string>
     <string name="dog_description">Your Dog\'s Name and Breed</string>
     <string name="vet_address_label">Address:</string>
+    <string name="friendly_place_address_label">Address:</string>
     <string name="vet_city_label">City:</string>
     <string name="vet_phone_label">Phone:</string>
+    <string name="friendly_place_phone_label">Phone:</string>
     <string name="vet_address">%1$s  %2$s</string>
     <string name="this_dog_photo">A photo of this dog</string>
     <string name="phone_img_description">Phone call</string>
@@ -55,4 +57,5 @@
     <string name="no_messages">There is no messages for you :(</string>
     <string name="desc_place_photo">A photo of this place</string>
     <string name="dog_friendly_places">Dog friendly places</string>
+    <string name="friendly_place_details">Dog friendly place</string>
 </resources>
