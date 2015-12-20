@@ -85,7 +85,7 @@ public class FriendlyPlacesActivity extends AppCompatActivity implements OnMapRe
                             @Override
                             public boolean onMarkerClick(Marker marker) {
                                 FriendlyPlace markedPlace = placesFound.get(marker.getId());
-                                Intent intent = new Intent(FriendlyPlacesActivity.this, DogFriendlyPlaceDetailsActivity.class);
+                                Intent intent = new Intent(FriendlyPlacesActivity.this, FriendlyPlaceDetailsActivity.class);
                                 intent.putExtra("name", markedPlace.name);
                                 intent.putExtra("address", markedPlace.address);
                                 intent.putExtra("phone", markedPlace.phone);

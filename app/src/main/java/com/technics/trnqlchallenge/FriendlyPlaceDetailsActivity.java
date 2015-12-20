@@ -1,16 +1,15 @@
 package com.technics.trnqlchallenge;
 
-import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class DogFriendlyPlaceDetailsActivity extends AppCompatActivity {
+public class FriendlyPlaceDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dog_friendly_place_details);
+        setContentView(R.layout.activity_friendly_place_details);
         setTitle(R.string.friendly_place_details);
 
         String name = getIntent().getStringExtra("name");

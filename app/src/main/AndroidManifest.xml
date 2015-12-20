@@ -70,7 +70,7 @@
         <activity android:name=".AnnouncementsNearbyActivity" />
         <activity android:name=".ViewMessageActivity" />
         <activity android:name=".FriendlyPlacesActivity" />
-        <activity android:name=".DogFriendlyPlaceDetailsActivity" />
+        <activity android:name=".FriendlyPlaceDetailsActivity" />
     </application>
 
 </manifest>
