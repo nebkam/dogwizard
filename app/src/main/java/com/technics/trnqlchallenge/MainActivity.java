@@ -10,6 +10,8 @@ import com.trnql.smart.places.PlaceType;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -99,13 +101,31 @@ public class MainActivity extends SmartCompatActivity {
         getPlacesManager().setIncludeImages(true);
 
         gpsCard = (CardView)findViewById(R.id.gpsOffCard);
-        checkGPS();
-    }
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        LocationListener locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {}
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {}
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        checkGPS();
+            @Override
+            public void onProviderEnabled(String provider) {
+                gpsCard.setVisibility(View.GONE);
+            }
+            @Override
+            public void onProviderDisabled(String provider) {
+                if (!gpsWarningIgnored) {
+                    gpsCard.setVisibility(View.VISIBLE);
+                }
+            }
+        };
+        try {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        } catch (SecurityException exc) {
+            if (!gpsWarningIgnored) {
+                gpsCard.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override
@@ -259,16 +279,6 @@ public class MainActivity extends SmartCompatActivity {
         startActivity(intent);
     }
 
-    private void checkGPS() {
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            gpsCard.setVisibility(View.GONE);
-        }  else {
-            if (!gpsWarningIgnored) {
-                gpsCard.setVisibility(View.VISIBLE);
-            }
-        }
-    }
     public void ignoreGPSWarning(View view) {
         gpsCard.setVisibility(View.GONE);
         gpsWarningIgnored = true;
