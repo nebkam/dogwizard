@@ -24,7 +24,7 @@ import java.util.List;
 
 public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMapReadyCallback{
     private GoogleMap mMap;
-    private HashMap<String,DogFriendlyPlace> placesFound = new HashMap<>();
+    private HashMap<String,FriendlyPlace> placesFound = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,15 +76,15 @@ public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMa
                                 Marker marker = mMap.addMarker(new MarkerOptions().position(latLng));
                                 boundsBuilder.include(latLng);
 
-                                DogFriendlyPlace dogFriendlyPlace = new DogFriendlyPlace(name,address,phone,website);
-                                placesFound.put(marker.getId(), dogFriendlyPlace);
+                                FriendlyPlace friendlyPlace = new FriendlyPlace(name,address,phone,website);
+                                placesFound.put(marker.getId(), friendlyPlace);
                             }
                         }
                         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 30));
                         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                             @Override
                             public boolean onMarkerClick(Marker marker) {
-                                DogFriendlyPlace markedPlace = placesFound.get(marker.getId());
+                                FriendlyPlace markedPlace = placesFound.get(marker.getId());
                                 Intent intent = new Intent(DogFriendlyPlacesActivity.this, DogFriendlyPlaceDetailsActivity.class);
                                 intent.putExtra("name", markedPlace.name);
                                 intent.putExtra("address", markedPlace.address);
