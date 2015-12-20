@@ -7,70 +7,76 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".FriendlyPlaceDetailsActivity">
-
+    tools:context=".FriendlyPlaceDetailsActivity"
+    >
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/friendlyPlaceName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/friendlyPlaceName"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        />
 
     <TextView
+        android:id="@+id/friendlyPlaceAddressLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@id/friendlyPlaceName"
+        android:layout_marginTop="@dimen/details_vertical_margin"
         android:text="@string/friendly_place_address_label"
-        android:id="@+id/textView5"
-        android:layout_marginTop="55dp"
-        android:layout_below="@+id/friendlyPlaceName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:visibility="gone"
+        />
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/friendlyPlaceAddress"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/friendlyPlaceAddress"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="72dp"
-        android:layout_marginEnd="72dp" />
+        android:layout_below="@id/friendlyPlaceAddressLabel"
+        android:layout_marginTop="@dimen/details_vertical_margin"
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone"
+        />
 
     <TextView
+        android:id="@+id/friendlyPlacePhoneLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/friendlyPlaceAddress"
+        android:layout_marginTop="@dimen/details_vertical_margin"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/friendly_place_phone_label"
-        android:id="@+id/textView8"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:visibility="gone"
+        />
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
         android:id="@+id/friendlyPlacePhone"
-        android:layout_below="@+id/friendlyPlaceAddress"
-        android:layout_alignLeft="@+id/friendlyPlaceAddress"
-        android:layout_alignStart="@+id/friendlyPlaceAddress" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/friendlyPlacePhoneLabel"
+        android:layout_marginTop="@dimen/details_vertical_margin"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone"
+        />
 
     <TextView
+        android:id="@+id/friendlyPlaceWebsiteLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/friendlyPlacePhone"
+        android:layout_marginTop="@dimen/details_vertical_margin"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=""
+        android:text="@string/friendly_place_website_label"
+        android:visibility="gone"
+        />
+    <TextView
         android:id="@+id/friendlyPlaceWebsite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/friendlyPlaceWebsiteLabel"
+        android:layout_marginTop="@dimen/details_vertical_margin"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/colorAccent"
         android:autoLink="web"
-        android:layout_below="@+id/friendlyPlacePhone"
-        android:layout_toRightOf="@+id/friendlyPlaceName"
-        android:layout_toEndOf="@+id/friendlyPlaceName"
-        android:layout_marginTop="55dp" />
+        android:visibility="gone"
+        />
 </RelativeLayout>
