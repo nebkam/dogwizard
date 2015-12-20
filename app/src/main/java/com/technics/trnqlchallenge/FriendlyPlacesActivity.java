@@ -22,14 +22,14 @@ import com.parse.ParseQuery;
 import java.util.HashMap;
 import java.util.List;
 
-public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMapReadyCallback{
+public class FriendlyPlacesActivity extends AppCompatActivity implements OnMapReadyCallback{
     private GoogleMap mMap;
     private HashMap<String,FriendlyPlace> placesFound = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dog_friendly_places);
+        setContentView(R.layout.activity_friendly_places);
 
         setTitle(R.string.dog_friendly_places);
 
@@ -85,7 +85,7 @@ public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMa
                             @Override
                             public boolean onMarkerClick(Marker marker) {
                                 FriendlyPlace markedPlace = placesFound.get(marker.getId());
-                                Intent intent = new Intent(DogFriendlyPlacesActivity.this, DogFriendlyPlaceDetailsActivity.class);
+                                Intent intent = new Intent(FriendlyPlacesActivity.this, DogFriendlyPlaceDetailsActivity.class);
                                 intent.putExtra("name", markedPlace.name);
                                 intent.putExtra("address", markedPlace.address);
                                 intent.putExtra("phone", markedPlace.phone);

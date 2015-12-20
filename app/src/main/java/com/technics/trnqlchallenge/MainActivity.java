@@ -240,7 +240,7 @@ public class MainActivity extends SmartCompatActivity {
     }
 
     public void showDogFriendlyPlaces (View view) {
-        Intent intent = new Intent(MainActivity.this, DogFriendlyPlacesActivity.class);
+        Intent intent = new Intent(MainActivity.this, FriendlyPlacesActivity.class);
         intent.putExtra("com.technics.trnqlchallenge.LAT", latitude);
         intent.putExtra("com.technics.trnqlchallenge.LONG", longitude);
         startActivity(intent);
