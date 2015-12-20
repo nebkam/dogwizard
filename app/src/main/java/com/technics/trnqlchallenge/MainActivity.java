@@ -10,6 +10,7 @@ import com.trnql.smart.places.PlaceType;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -25,6 +26,8 @@ public class MainActivity extends SmartCompatActivity {
     private Double latitude = 37.441883;
     private Double longitude = -122.143019;
     private CardView placeCard;
+    private CardView gpsCard;
+    private Boolean gpsWarningIgnored = false;
     private ImageView placePhoto;
     private TextView placeName;
     private TextView placeDistance;
@@ -39,6 +42,7 @@ public class MainActivity extends SmartCompatActivity {
         if (isFirstRun()) {
             showSplash();
         }
+
         placeCard = (CardView)findViewById(R.id.placeCard);
         placePhoto = (ImageView)findViewById(R.id.placePhoto);
         placeName = (TextView)findViewById(R.id.placeName);
@@ -93,6 +97,15 @@ public class MainActivity extends SmartCompatActivity {
                 PlaceType.ZOO
         );
         getPlacesManager().setIncludeImages(true);
+
+        gpsCard = (CardView)findViewById(R.id.gpsOffCard);
+        checkGPS();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        checkGPS();
     }
 
     @Override
@@ -244,5 +257,23 @@ public class MainActivity extends SmartCompatActivity {
         intent.putExtra("com.technics.trnqlchallenge.LAT", latitude);
         intent.putExtra("com.technics.trnqlchallenge.LONG", longitude);
         startActivity(intent);
+    }
+
+    private void checkGPS() {
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            gpsCard.setVisibility(View.GONE);
+        }  else {
+            if (!gpsWarningIgnored) {
+                gpsCard.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+    public void ignoreGPSWarning(View view) {
+        gpsCard.setVisibility(View.GONE);
+        gpsWarningIgnored = true;
+    }
+    public void openGPSSettings(View view) {
+        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
     }
 }
