@@ -87,7 +87,7 @@ public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMa
                                 DogFriendlyPlace markedPlace = placesFound.get(marker.getId());
                                 Intent intent = new Intent(DogFriendlyPlacesActivity.this, DogFriendlyPlaceDetailsActivity.class);
                                 intent.putExtra("name", markedPlace.name);
-                                intent.putExtra("city", markedPlace.address);
+                                intent.putExtra("address", markedPlace.address);
                                 intent.putExtra("phone", markedPlace.phone);
                                 intent.putExtra("website", markedPlace.website);
                                 startActivity(intent);
