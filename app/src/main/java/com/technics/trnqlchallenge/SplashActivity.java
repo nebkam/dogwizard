@@ -11,17 +11,14 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.ImageView;
 
-import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class DogDescriptionActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     private ParseUser user;
     private static final int SELECT_PHOTO = 100;
@@ -33,7 +30,7 @@ public class DogDescriptionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dog_description);
+        setContentView(R.layout.activity_splash);
 
         user = ParseUser.getCurrentUser();
 
@@ -65,7 +62,7 @@ public class DogDescriptionActivity extends AppCompatActivity {
         user.put("dogBreed", dogBreed.getText().toString());
         user.saveInBackground();
 
-        Intent intent = new Intent(DogDescriptionActivity.this,MainActivity.class);
+        Intent intent = new Intent(SplashActivity.this,MainActivity.class);
         startActivity(intent);
     }
 
@@ -74,7 +71,7 @@ public class DogDescriptionActivity extends AppCompatActivity {
         user.put("dogBreed", "Unknown");
         user.saveInBackground();
 
-        Intent intent = new Intent(DogDescriptionActivity.this,MainActivity.class);
+        Intent intent = new Intent(SplashActivity.this,MainActivity.class);
         startActivity(intent);
     }
 

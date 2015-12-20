@@ -16,14 +16,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class DogPhotoActivity extends AppCompatActivity {
+public class PhotoActivity extends AppCompatActivity {
     private static final int SELECT_PHOTO = 100;
     private ImageView dogPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dog_photo);
+        setContentView(R.layout.activity_photo);
 
         dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
 

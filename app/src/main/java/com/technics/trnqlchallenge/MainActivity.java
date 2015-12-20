@@ -211,7 +211,7 @@ public class MainActivity extends SmartCompatActivity {
     private void showSplash(){
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         preferences.edit().putBoolean("firstRun",false).apply();
-        Intent intent = new Intent(MainActivity.this,DogDescriptionActivity.class);
+        Intent intent = new Intent(MainActivity.this,SplashActivity.class);
         startActivity(intent);
     }
 

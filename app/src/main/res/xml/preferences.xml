@@ -29,6 +29,6 @@
         >
         <intent android:action="android.intent.action.VIEW"
             android:targetPackage="com.technics.trnqlchallenge"
-            android:targetClass="com.technics.trnqlchallenge.DogPhotoActivity" />
+            android:targetClass="com.technics.trnqlchallenge.PhotoActivity" />
     </Preference>
 </PreferenceScreen>
