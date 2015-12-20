@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -23,7 +24,8 @@ import java.util.List;
 
 public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMapReadyCallback{
     private GoogleMap mMap;
-    private HashMap<String,DogFriendlyPlace> dogFriendlyPlaceHashMap = new HashMap<>();
+    private HashMap<String,DogFriendlyPlace> placesFound = new HashMap<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,32 +48,43 @@ public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMa
         ParseQuery<ParseObject> query = new ParseQuery<>("FriendlyPlace");
         query.whereWithinKilometers("location", point, 8.00).orderByDescending("createdAt");
         query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> objects, ParseException e) {
+            public void done(List<ParseObject> places, ParseException e) {
                 if (e == null) {
-                    if (!objects.isEmpty()){
-                        for (int i=0; i<objects.size(); i++) {
-                            ParseObject object = objects.get(i);
+                    if (!places.isEmpty()){
+                        for (int i=0; i<places.size(); i++) {
+                            ParseObject placeFound = places.get(i);
+                            if (placeFound.getString("name") != null) {
+                                //Must be present
+                                String name = placeFound.getString("name");
+                                ParseGeoPoint location = placeFound.getParseGeoPoint("location");
+                                //May be present
+                                String address = "";
+                                String phone = "";
+                                String website = "";
 
-                            String name = object.getString("name");
-                            String address = object.getString("address");
-                            String phone = object.getString("phone");
-                            String website = object.getString("website");
+                                if (placeFound.getString("address") != null) {
+                                    address = placeFound.getString("address");
+                                }
+                                if (placeFound.getString("phone") != null) {
+                                    phone = placeFound.getString("phone");
+                                }
+                                if (placeFound.getString("website") != null) {
+                                    website = placeFound.getString("website");
+                                }
 
-                            ParseGeoPoint location = object.getParseGeoPoint("location");
+                                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                                Marker marker = mMap.addMarker(new MarkerOptions().position(latLng));
+                                boundsBuilder.include(latLng);
 
-                            Double markerLatitude = location.getLatitude();
-                            Double markerLongitude = location.getLongitude();
-
-                            LatLng latLng = new LatLng(markerLatitude, markerLongitude);
-                            Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(object.getString("name")));
-
-                            DogFriendlyPlace dogFriendlyPlace = new DogFriendlyPlace(name,address,phone,website);
-                            dogFriendlyPlaceHashMap.put(marker.getId(), dogFriendlyPlace);
+                                DogFriendlyPlace dogFriendlyPlace = new DogFriendlyPlace(name,address,phone,website);
+                                placesFound.put(marker.getId(), dogFriendlyPlace);
+                            }
                         }
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 30));
                         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                             @Override
                             public boolean onMarkerClick(Marker marker) {
-                                DogFriendlyPlace markedPlace = dogFriendlyPlaceHashMap.get(marker.getId());
+                                DogFriendlyPlace markedPlace = placesFound.get(marker.getId());
                                 Intent intent = new Intent(DogFriendlyPlacesActivity.this, DogFriendlyPlaceDetailsActivity.class);
                                 intent.putExtra("name", markedPlace.name);
                                 intent.putExtra("city", markedPlace.address);
@@ -85,6 +98,8 @@ public class DogFriendlyPlacesActivity extends AppCompatActivity implements OnMa
                     else {
                         Toast.makeText(getApplicationContext(), R.string.no_friendly_places_nearby, Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    System.out.println(e.getMessage());
                 }
             }
         });
