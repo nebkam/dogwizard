@@ -152,28 +152,77 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-        <Button
-            android:id="@+id/btn_owners_nearby"
+        <TableLayout
+            android:layout_marginTop="@dimen/details_vertical_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/show_owners_btn"
-            android:onClick="showOwnersNearby" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/show_vets_btn"
-            android:onClick="showVetsNearby"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/show_places_btn"
-            android:onClick="showDogFriendlyPlaces"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Messages"
-            android:onClick="showMessages"
-            android:visibility="gone"/>
+            android:stretchColumns="*"
+            >
+            <TableRow>
+                <Button
+                    android:id="@+id/btn_owners_nearby"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="fill_parent"
+                    android:text="@string/show_owners_btn"
+                    android:onClick="showOwnersNearby"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimaryTextInverse"
+                    android:drawableTop="@drawable/ic_group_24dp"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:layout_margin="4dp"
+                    />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="fill_parent"
+                    android:text="@string/show_vets_btn"
+                    android:onClick="showVetsNearby"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimaryTextInverse"
+                    android:drawableTop="@drawable/ic_local_hospital_24dp"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:layout_margin="4dp"
+                    />
+            </TableRow>
+            <TableRow>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="fill_parent"
+                    android:text="@string/show_places_btn"
+                    android:onClick="showDogFriendlyPlaces"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimaryTextInverse"
+                    android:drawableTop="@drawable/ic_public_24dp"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:layout_margin="4dp"
+                    />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="fill_parent"
+                    android:text="Messages"
+                    android:onClick="showMessages"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimaryTextInverse"
+                    android:drawableTop="@drawable/ic_email_24dp"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:layout_margin="4dp"
+                    />
+            </TableRow>
+
+        </TableLayout>
+
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

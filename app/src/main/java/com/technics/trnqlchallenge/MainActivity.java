@@ -132,18 +132,18 @@ public class MainActivity extends SmartCompatActivity {
 
     @Override
     protected void smartPeopleChange(List<PersonEntry> people) {
-        Button btn = (Button)findViewById(R.id.btn_owners_nearby);
-        if (people.size() > 0) {
-            btn.setVisibility(View.VISIBLE);
-            if (people.size() > 1) {
-                btn.setText(String.valueOf(people.size())+" Owners Nearby");
-            } else {
-                btn.setText("1 Owner Nearby");
-            }
-        } else {
-            btn.setVisibility(View.GONE);
-            //TODO card
-        }
+//        Button btn = (Button)findViewById(R.id.btn_owners_nearby);
+//        if (people.size() > 0) {
+//            btn.setVisibility(View.VISIBLE);
+//            if (people.size() > 1) {
+//                btn.setText(String.valueOf(people.size())+" Owners Nearby");
+//            } else {
+//                btn.setText("1 Owner Nearby");
+//            }
+//        } else {
+//            btn.setVisibility(View.GONE);
+//            //TODO card
+//        }
     }
 
     @Override
