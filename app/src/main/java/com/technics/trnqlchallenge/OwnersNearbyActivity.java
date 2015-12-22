@@ -9,6 +9,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -76,7 +77,7 @@ public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapRe
                 for (int i = 0; i < ownersNearby.size(); i++) {
                     PersonEntry personEntry = ownersNearby.get(i);
                     LatLng latLng = new LatLng(personEntry.getLatitude(),personEntry.getLongitude());
-                    Marker marker = mMap.addMarker(new MarkerOptions().position(latLng));
+                    Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_24dp)));
                     boundsBuilder.include(latLng);
                     markers.put(marker.getId(),personEntry.getUserToken());
                 }

@@ -1,6 +1,7 @@
 package com.technics.trnqlchallenge;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -81,7 +83,7 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                             }
 
                             LatLng latLng = new LatLng(markerLatitude, markerLongitude);
-                            Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(markerTitle));
+                            Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(markerTitle).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_24dp)));
                             boundsBuilder.include(latLng);
 
                             Vet vetFound = new Vet(markerTitle,city,street,streetNumber,phone,website);
