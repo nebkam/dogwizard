@@ -49,56 +49,7 @@ public class MainActivity extends SmartCompatActivity {
         placePhoto = (ImageView)findViewById(R.id.placePhoto);
         placeName = (TextView)findViewById(R.id.placeName);
         placeDistance = (TextView)findViewById(R.id.placeDistance);
-        getPlacesManager().setTypeFilters(
-                PlaceType.AIRPORT,
-                PlaceType.AMUSEMENT_PARK,
-                PlaceType.AQUARIUM,
-                PlaceType.ART_GALLERY,
-                PlaceType.BAKERY,
-                PlaceType.BANK,
-                PlaceType.BAR,
-                PlaceType.BEAUTY_SALON,
-                PlaceType.BOOK_STORE,
-                PlaceType.BOWLING_ALLEY,
-                PlaceType.BUS_STATION,
-                PlaceType.CAFE,
-                PlaceType.CASINO,
-                PlaceType.CLOTHING_STORE,
-                PlaceType.CONVENIENCE_STORE,
-                PlaceType.DEPARTMENT_STORE,
-                PlaceType.ELECTRONICS_STORE,
-                PlaceType.FLORIST,
-                PlaceType.FOOD,
-                PlaceType.FURNITURE_STORE,
-                PlaceType.GAS_STATION,
-                PlaceType.GROCERY_OR_SUPERMARKET,
-                PlaceType.GYM,
-                PlaceType.HAIR_CARE,
-                PlaceType.HARDWARE_STORE,
-                PlaceType.HOME_GOODS_STORE,
-                PlaceType.JEWELRY_STORE,
-                PlaceType.LAUNDRY,
-                PlaceType.LIBRARY,
-                PlaceType.LODGING,
-                PlaceType.MOVIE_THEATER,
-                PlaceType.MUSEUM,
-                PlaceType.NIGHT_CLUB,
-                PlaceType.PARK,
-                PlaceType.POST_OFFICE,
-                PlaceType.RESTAURANT,
-                PlaceType.RV_PARK,
-                PlaceType.SCHOOL,
-                PlaceType.SHOE_STORE,
-                PlaceType.SHOPPING_MALL,
-                PlaceType.SPA,
-                PlaceType.STADIUM,
-                PlaceType.STORE,
-                PlaceType.SUBWAY_STATION,
-                PlaceType.TRAIN_STATION,
-                PlaceType.UNIVERSITY,
-                PlaceType.ZOO
-        );
-        getPlacesManager().setIncludeImages(true);
+        initSmartPlaces();
 
         gpsCard = (CardView)findViewById(R.id.gpsOffCard);
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -285,5 +236,58 @@ public class MainActivity extends SmartCompatActivity {
     }
     public void openGPSSettings(View view) {
         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+    }
+
+    private void initSmartPlaces() {
+        getPlacesManager().setTypeFilters(
+                PlaceType.AIRPORT,
+                PlaceType.AMUSEMENT_PARK,
+                PlaceType.AQUARIUM,
+                PlaceType.ART_GALLERY,
+                PlaceType.BAKERY,
+                PlaceType.BANK,
+                PlaceType.BAR,
+                PlaceType.BEAUTY_SALON,
+                PlaceType.BOOK_STORE,
+                PlaceType.BOWLING_ALLEY,
+                PlaceType.BUS_STATION,
+                PlaceType.CAFE,
+                PlaceType.CASINO,
+                PlaceType.CLOTHING_STORE,
+                PlaceType.CONVENIENCE_STORE,
+                PlaceType.DEPARTMENT_STORE,
+                PlaceType.ELECTRONICS_STORE,
+                PlaceType.FLORIST,
+                PlaceType.FOOD,
+                PlaceType.FURNITURE_STORE,
+                PlaceType.GAS_STATION,
+                PlaceType.GROCERY_OR_SUPERMARKET,
+                PlaceType.GYM,
+                PlaceType.HAIR_CARE,
+                PlaceType.HARDWARE_STORE,
+                PlaceType.HOME_GOODS_STORE,
+                PlaceType.JEWELRY_STORE,
+                PlaceType.LAUNDRY,
+                PlaceType.LIBRARY,
+                PlaceType.LODGING,
+                PlaceType.MOVIE_THEATER,
+                PlaceType.MUSEUM,
+                PlaceType.NIGHT_CLUB,
+                PlaceType.PARK,
+                PlaceType.POST_OFFICE,
+                PlaceType.RESTAURANT,
+                PlaceType.RV_PARK,
+                PlaceType.SCHOOL,
+                PlaceType.SHOE_STORE,
+                PlaceType.SHOPPING_MALL,
+                PlaceType.SPA,
+                PlaceType.STADIUM,
+                PlaceType.STORE,
+                PlaceType.SUBWAY_STATION,
+                PlaceType.TRAIN_STATION,
+                PlaceType.UNIVERSITY,
+                PlaceType.ZOO
+        );
+        getPlacesManager().setIncludeImages(true);
     }
 }
