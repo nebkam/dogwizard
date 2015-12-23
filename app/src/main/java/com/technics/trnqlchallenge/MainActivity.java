@@ -5,7 +5,6 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.trnql.smart.base.SmartCompatActivity;
 import com.trnql.smart.location.LocationEntry;
-import com.trnql.smart.people.PersonEntry;
 import com.trnql.smart.places.PlaceEntry;
 import com.trnql.smart.places.PlaceType;
 
@@ -17,7 +16,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -128,22 +126,6 @@ public class MainActivity extends SmartCompatActivity {
                 gpsCard.setVisibility(View.VISIBLE);
             }
         }
-    }
-
-    @Override
-    protected void smartPeopleChange(List<PersonEntry> people) {
-//        Button btn = (Button)findViewById(R.id.btn_owners_nearby);
-//        if (people.size() > 0) {
-//            btn.setVisibility(View.VISIBLE);
-//            if (people.size() > 1) {
-//                btn.setText(String.valueOf(people.size())+" Owners Nearby");
-//            } else {
-//                btn.setText("1 Owner Nearby");
-//            }
-//        } else {
-//            btn.setVisibility(View.GONE);
-//            //TODO card
-//        }
     }
 
     @Override
