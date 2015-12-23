@@ -32,19 +32,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
-                    android:id="@+id/gpsTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/details_vertical_margin"
-                    android:text="@string/gps_off_title"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorPrimaryText"
-                    />
-                <TextView
                     android:id="@+id/gpsWarning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/gpsTitle"
                     android:padding="@dimen/details_vertical_margin"
                     android:text="@string/gps_off_warning"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -64,6 +54,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/btn_gps_skip"
                         style="?android:attr/borderlessButtonStyle"
+                        android:background="@android:color/transparent"
                         android:onClick="ignoreGPSWarning"
                         />
                     <Button
@@ -71,8 +62,9 @@
                         android:layout_height="wrap_content"
                         android:text="@string/btn_gps_set"
                         style="?android:attr/borderlessButtonStyle"
+                        android:background="@android:color/transparent"
                         android:onClick="openGPSSettings"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         />
                 </LinearLayout>
             </RelativeLayout>
@@ -139,6 +131,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/btn_skip"
                         style="?android:attr/borderlessButtonStyle"
+                        android:background="@android:color/transparent"
                         android:onClick="skip"
                         />
                     <Button
@@ -146,6 +139,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/btn_mark_friendly"
                         style="?android:attr/borderlessButtonStyle"
+                        android:background="@android:color/transparent"
                         android:onClick="markAsFriendly"
                         android:textColor="@color/colorAccent"
                         />

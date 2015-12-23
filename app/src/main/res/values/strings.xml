@@ -48,7 +48,7 @@
     <string name="pref_walk_reminder_summary">Warns you about upcoming bad weather</string>
     <string name="btn_set_photo">Set photo</string>
     <string name="btn_switch_photo">Change photo</string>
-    <string name="btn_mark_friendly">Dog Friendly</string>
+    <string name="btn_mark_friendly">Mark As Dog Friendly</string>
     <string name="btn_skip">Skip</string>
     <string name="message_from_label">From:</string>
     <string name="message_body_label">Message:</string>
@@ -59,8 +59,7 @@
     <string name="desc_place_photo">A photo of this place</string>
     <string name="dog_friendly_places">Dog friendly places</string>
     <string name="friendly_place_details">Dog friendly place</string>
-    <string name="gps_off_title">Location Unavailable</string>
-    <string name="gps_off_warning">For best experience consider turning your GPS on.</string>
+    <string name="gps_off_warning">This app is context-aware. Consider turning your GPS on.</string>
     <string name="btn_gps_skip">Dismiss</string>
     <string name="btn_gps_set">Settings</string>
 </resources>
