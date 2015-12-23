@@ -1,7 +1,10 @@
 package com.technics.trnqlchallenge;
 
+import com.parse.CountCallback;
+import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.trnql.smart.base.SmartCompatActivity;
 import com.trnql.smart.location.LocationEntry;
@@ -35,6 +38,7 @@ public class MainActivity extends SmartCompatActivity {
     private TextView placeDistance;
     private List<PlaceEntry> placesFound = new ArrayList<>();
     private PlaceEntry currentPlace;
+    private TextView announcementCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +49,15 @@ public class MainActivity extends SmartCompatActivity {
             showSplash();
         }
 
+        announcementCount = (TextView)findViewById(R.id.announcement_count);
         placeCard = (CardView)findViewById(R.id.placeCard);
         placePhoto = (ImageView)findViewById(R.id.placePhoto);
         placeName = (TextView)findViewById(R.id.placeName);
         placeDistance = (TextView)findViewById(R.id.placeDistance);
+        gpsCard = (CardView)findViewById(R.id.gpsOffCard);
+
         initSmartPlaces();
 
-        gpsCard = (CardView)findViewById(R.id.gpsOffCard);
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
             @Override
@@ -83,6 +89,7 @@ public class MainActivity extends SmartCompatActivity {
     public void smartLatLngChange(LocationEntry locationEntry) {
         latitude = locationEntry.getLatitude();
         longitude = locationEntry.getLongitude();
+        countAnnouncements();
     }
 
     @Override
@@ -289,5 +296,21 @@ public class MainActivity extends SmartCompatActivity {
                 PlaceType.ZOO
         );
         getPlacesManager().setIncludeImages(true);
+    }
+
+    private void countAnnouncements() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Announcement");
+        ParseGeoPoint point = new ParseGeoPoint(latitude,longitude);
+        query.whereWithinKilometers("location",point,8.00).orderByDescending("createdAt");
+        query.countInBackground(new CountCallback() {
+            @Override
+            public void done(int count, ParseException e) {
+                if (e == null && count > 0) {
+                    announcementCount.setText(String.valueOf(count));
+                } else {
+                    announcementCount.setText("");
+                }
+            }
+        });
     }
 }

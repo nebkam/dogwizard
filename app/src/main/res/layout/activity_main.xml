@@ -204,7 +204,7 @@
                     android:layout_weight="1"
                     android:layout_height="fill_parent"
                     android:text="Messages"
-                    android:onClick="showMessages"
+                    android:onClick="showAnnouncements"
                     android:background="@color/colorPrimaryDark"
                     android:textColor="@color/colorPrimaryTextInverse"
                     android:drawableTop="@drawable/ic_email_24dp"
@@ -217,20 +217,41 @@
 
         </TableLayout>
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:contentDescription="@string/settings_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_settings_24dp"
-            android:layout_gravity="bottom|right"
-            android:layout_marginTop="20dp"
-            android:onClick="showSettings"/>
-        <Button
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/settings_btn"
-            android:onClick="showSettings"
-            android:visibility="gone"/>
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+            <ImageView
+                android:id="@+id/btn_announcements"
+                android:contentDescription="@string/btn_announcements_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/loud_speaker"
+                android:onClick="showAnnouncements"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:id="@+id/announcement_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSizeLarge"
+                android:textColor="@color/colorPrimaryTextInverse"
+                android:onClick="showAnnouncements"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="30dp"
+                />
+            <ImageView
+                android:id="@+id/btn_settings"
+                android:contentDescription="@string/settings_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_settings_24dp"
+                android:onClick="showSettings"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+
+
+
     </LinearLayout>
 </ScrollView>
