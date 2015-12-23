@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/purple"
     tools:context="com.technics.trnqlchallenge.MainActivity"
     >
     <LinearLayout
@@ -166,7 +167,7 @@
                     android:layout_height="fill_parent"
                     android:text="@string/show_owners_btn"
                     android:onClick="showOwnersNearby"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/colorPrimary"
                     android:textColor="@color/colorPrimaryTextInverse"
                     android:drawableTop="@drawable/ic_group_24dp"
                     android:drawablePadding="8dp"
@@ -180,7 +181,7 @@
                     android:layout_height="fill_parent"
                     android:text="@string/show_vets_btn"
                     android:onClick="showVetsNearby"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/colorPrimary"
                     android:textColor="@color/colorPrimaryTextInverse"
                     android:drawableTop="@drawable/ic_local_hospital_24dp"
                     android:drawablePadding="8dp"
