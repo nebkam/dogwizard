@@ -204,7 +204,7 @@
                     android:layout_weight="1"
                     android:layout_height="fill_parent"
                     android:text="Messages"
-                    android:onClick="showAnnouncements"
+                    android:onClick="showMessages"
                     android:background="@color/colorPrimaryDark"
                     android:textColor="@color/colorPrimaryTextInverse"
                     android:drawableTop="@drawable/ic_email_24dp"
