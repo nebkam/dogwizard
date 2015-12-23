@@ -23,6 +23,13 @@
         android:title="@string/your_dog_breed"
         android:summary=""
         />
+    <ListPreference
+        android:key="pref_sex"
+        android:title="Your Dog Sex"
+        android:summary="%s"
+        android:entries="@array/dog_sex"
+        android:entryValues="@array/dog_sex_values"
+        android:defaultValue="0" />
     <Preference
         android:key="pref_photo"
         android:title="@string/your_dog_photo"
