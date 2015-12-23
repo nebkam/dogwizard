@@ -2,9 +2,9 @@
     <string name="app_name">TrnqlChallenge</string>
     <string name="fb_app_id">455988501255208</string>
     <string name="dog_name">Dog\'s Name</string>
-    <string name="your_dog_name">Your Dog\'s Name</string>
-    <string name="your_dog_breed">Your Dog\'s Breed</string>
-    <string name="your_dog_photo">Your Dog\'s Photo</string>
+    <string name="your_dog_name">Your Dog Name</string>
+    <string name="your_dog_breed">Your Dog Breed</string>
+    <string name="your_dog_photo">Your Dog Photo</string>
     <string name="dog_breed">Dog\'s Breed</string>
     <string name="pick_breed">Pick a Breed</string>
     <string name="save">Save</string>
@@ -62,4 +62,13 @@
     <string name="gps_off_warning">This app is context-aware. Consider turning your GPS on.</string>
     <string name="btn_gps_skip">Dismiss</string>
     <string name="btn_gps_set">Settings</string>
+    <string name="settings_desc">Settings</string>
+    <string-array name="dog_sex">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="dog_sex_values">
+        <item>male</item>
+        <item>female</item>
+    </string-array>
 </resources>

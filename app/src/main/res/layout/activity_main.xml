@@ -217,14 +217,15 @@
 
         </TableLayout>
 
-
-        <Button
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageView1"
+            android:contentDescription="@string/settings_desc"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Announcements"
-            android:onClick="showAnnouncements"
-            android:visibility="gone"
-            />
+            android:src="@drawable/ic_settings_24dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginTop="20dp"
+            android:onClick="showSettings"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
