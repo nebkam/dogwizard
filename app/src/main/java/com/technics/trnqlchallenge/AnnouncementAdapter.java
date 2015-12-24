@@ -16,18 +16,28 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementHolder
 
     @Override
     public int getItemCount(){
-        return announcementList.size();
+        if (announcementList == null) {
+            return 0;
+        } else {
+            return announcementList.size();
+        }
     }
 
     @Override
     public void onBindViewHolder(AnnouncementHolder announcementHolder, int position) {
-        Announcement announcement = announcementList.get(position);
-        announcementHolder.body.setText( announcement.body );
+        if (announcementList != null) {
+            Announcement announcement = announcementList.get(position);
+            announcementHolder.body.setText( announcement.body );
+        }
     }
 
     @Override
     public AnnouncementHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_announcement,parent,false);
-        return new AnnouncementHolder(itemView);
+        if (announcementList == null) {
+            return null;
+        } else {
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_announcement,parent,false);
+            return new AnnouncementHolder(itemView);
+        }
     }
 }

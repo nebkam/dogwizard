@@ -64,6 +64,7 @@
     <string name="btn_gps_set">Settings</string>
     <string name="settings_desc">Settings</string>
     <string name="btn_announcements_label">Show Announcements</string>
+    <string name="err_announcements">Failed to fetch announcements</string>
     <string-array name="dog_sex">
         <item>Male</item>
         <item>Female</item>
