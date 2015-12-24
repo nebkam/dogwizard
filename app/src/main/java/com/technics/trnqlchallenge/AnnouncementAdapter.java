@@ -14,6 +14,10 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementHolder
         this.announcementList = list;
     }
 
+    protected void refresh(List<Announcement> list){
+        this.announcementList = list;
+    }
+
     @Override
     public int getItemCount(){
         if (announcementList == null) {

@@ -23,6 +23,7 @@ public class AnnouncementsNearbyActivity extends AppCompatActivity {
     private Double latitude;
     private Double longitude;
     private RecyclerView announcementsView;
+    private AnnouncementAdapter announcementAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,8 @@ public class AnnouncementsNearbyActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         announcementsView.setLayoutManager(layoutManager);
 
-        AnnouncementAdapter adapter = new AnnouncementAdapter(null);
-        announcementsView.setAdapter(adapter);
+        announcementAdapter = new AnnouncementAdapter(null);
+        announcementsView.setAdapter(announcementAdapter);
     }
 
     private void fetch() {
@@ -51,7 +52,8 @@ public class AnnouncementsNearbyActivity extends AppCompatActivity {
             @Override
             public void done(List<ParseObject> announcements, ParseException e) {
                 if (e == null) {
-                    Log.v("FOOBAR",String.valueOf(announcements.size()));
+                    announcementAdapter.refresh(decorate(announcements));
+                    announcementAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.err_announcements, Toast.LENGTH_SHORT).show();
                 }
