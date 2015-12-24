@@ -34,7 +34,6 @@ public class AnnouncementsNearbyActivity extends AppCompatActivity {
         latitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LAT",0);
         longitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LONG",0);
 
-        fetch();
         announcementsView = (RecyclerView)findViewById(R.id.announcement_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -42,12 +41,14 @@ public class AnnouncementsNearbyActivity extends AppCompatActivity {
 
         announcementAdapter = new AnnouncementAdapter(null);
         announcementsView.setAdapter(announcementAdapter);
+        fetch();
     }
 
     private void fetch() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Announcement");
         ParseGeoPoint point = new ParseGeoPoint(latitude,longitude);
         query.whereWithinKilometers("location",point,8.00).orderByDescending("createdAt");
+        query.include("createdBy");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> announcements, ParseException e) {
@@ -65,7 +66,11 @@ public class AnnouncementsNearbyActivity extends AppCompatActivity {
         List<Announcement> decorated = new ArrayList<>();
         for (ParseObject object:objects) {
             Announcement announcement = new Announcement();
+
             announcement.body = object.getString("body");
+            ParseObject createdBy = object.getParseObject("createdBy");
+            announcement.creatorName = createdBy.getString("dogName");
+
             decorated.add(announcement);
         }
         return  decorated;

@@ -6,9 +6,11 @@ import android.widget.TextView;
 
 public class AnnouncementHolder extends RecyclerView.ViewHolder {
     protected TextView body;
+    protected TextView creatorName;
 
     public AnnouncementHolder(View view){
         super(view);
         body = (TextView) view.findViewById(R.id.announcementBody);
+        creatorName = (TextView) view.findViewById(R.id.announcementCreatorName);
     }
 }
