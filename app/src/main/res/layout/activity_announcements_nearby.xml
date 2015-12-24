@@ -8,9 +8,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.technics.trnqlchallenge.AnnouncementsNearbyActivity">
-    <ListView
-        android:id="@+id/announcementList"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/announcement_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        >
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>
