@@ -22,7 +22,6 @@ public class MessageActivity extends AppCompatActivity {
 
     public void sendMessage(View view) {
         ParseUser user = ParseUser.getCurrentUser();
-        String sendFrom = user.getObjectId();
         Intent intent = getIntent();
         String sendTo = intent.getStringExtra("to");
 
@@ -33,7 +32,7 @@ public class MessageActivity extends AppCompatActivity {
         }
 
         ParseObject message = new ParseObject("Message");
-        message.put("from",sendFrom);
+        message.put("from",user);
         message.put("to",sendTo);
         message.put("body",body.getText().toString());
         message.put("isRead", false);
