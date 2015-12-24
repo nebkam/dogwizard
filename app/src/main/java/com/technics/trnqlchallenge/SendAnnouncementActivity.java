@@ -44,7 +44,7 @@ public class SendAnnouncementActivity extends AppCompatActivity {
         ParseUser user = ParseUser.getCurrentUser();
         announcement.put("body", announcementBody.getText().toString());
         announcement.put("location",point);
-        announcement.put("from",user.getObjectId());
+        announcement.put("createdBy",user);
         announcement.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
