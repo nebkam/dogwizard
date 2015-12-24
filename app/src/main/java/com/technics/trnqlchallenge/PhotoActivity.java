@@ -9,8 +9,13 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -28,13 +33,22 @@ public class PhotoActivity extends AppCompatActivity {
         dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
 
         ParseUser user = ParseUser.getCurrentUser();
-        if (user.getString("photo").equals("")) {
+        ParseFile file = user.getParseFile("photoFile");
+        if (file == null) {
             Button btn = (Button)findViewById(R.id.btn_switch);
             btn.setText(R.string.btn_set_photo);
         } else {
-            byte[] bytes = Base64.decode(user.getString("photo"), Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-            dogPhoto.setImageBitmap(bitmap);
+            file.getDataInBackground(new GetDataCallback() {
+                @Override
+                public void done(byte[] bytes, ParseException e) {
+                    if (e == null) {
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        dogPhoto.setImageBitmap(bitmap);
+                    } else {
+                        Toast.makeText(getApplicationContext(), R.string.err_photo_download, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
 
@@ -51,11 +65,20 @@ public class PhotoActivity extends AppCompatActivity {
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
                 byte[] bytes = byteArrayOutputStream.toByteArray();
-                String photoAsString = Base64.encodeToString(bytes, Base64.DEFAULT);
                 //Save to Parse
-                ParseUser user = ParseUser.getCurrentUser();
-                user.put("photo", photoAsString);
-                user.saveInBackground();
+                final ParseFile file = new ParseFile("photo.jpg",bytes);
+                file.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            ParseUser user = ParseUser.getCurrentUser();
+                            user.put("photoFile", file);
+                            user.saveInBackground();
+                        } else {
+                            Toast.makeText(getApplicationContext(), R.string.err_photo_upload, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             } catch (IOException ex){
                 ex.printStackTrace();
             }
