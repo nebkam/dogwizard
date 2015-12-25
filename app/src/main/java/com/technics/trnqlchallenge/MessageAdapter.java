@@ -32,6 +32,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageHolder>{
             Message message = messageList.get(position);
             messageHolder.body.setText( "Message:  " +  message.body );
             messageHolder.from.setText( "From:  " + message.from );
+            messageHolder.item = message;
         }
     }
 

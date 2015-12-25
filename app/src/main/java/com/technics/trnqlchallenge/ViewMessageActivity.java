@@ -29,7 +29,7 @@ public class ViewMessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_message);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
-        query.whereEqualTo("objectId", getIntent().getStringExtra("from"));
+        query.whereEqualTo("objectId", getIntent().getStringExtra("fromUserId"));
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
                 if (object == null) {

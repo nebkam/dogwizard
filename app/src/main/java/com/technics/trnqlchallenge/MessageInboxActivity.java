@@ -65,6 +65,7 @@ public class MessageInboxActivity extends AppCompatActivity {
             message.body = object.getString("body");
             ParseObject from = object.getParseObject("from");
             message.from = from.getString("dogName");
+            message.fromUserId = object.getString("fromUserId");
 
             decorated.add(message);
         }
