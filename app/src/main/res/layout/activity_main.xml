@@ -37,8 +37,8 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/details_vertical_margin"
                     android:text="@string/gps_off_warning"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/card_subtitle_size"
                     />
                 <LinearLayout
                     android:layout_below="@id/gpsWarning"
@@ -103,7 +103,7 @@
                     android:paddingBottom="16dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/card_title_size"
                     android:textColor="@color/colorPrimaryText"
                     />
                 <TextView
@@ -114,7 +114,7 @@
                     android:paddingBottom="16dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/card_subtitle_size"
                     android:textColor="@color/colorSecondaryText"
                     />
                 <LinearLayout
