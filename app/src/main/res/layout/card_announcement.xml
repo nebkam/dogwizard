@@ -44,8 +44,9 @@
                     />
             </RelativeLayout>
             <ImageView
-                android:layout_width="@dimen/avatar_width"
-                android:layout_height="@dimen/avatar_height"
+                android:layout_width="@dimen/card_small_photo_width"
+                android:layout_height="@dimen/card_small_photo_height"
+                android:adjustViewBounds="true"
                 android:layout_weight="1"
                 android:contentDescription="@string/sender_dog_photo"
                 android:src="@drawable/silhouette"
