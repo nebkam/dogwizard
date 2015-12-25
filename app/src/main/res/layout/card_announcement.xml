@@ -13,9 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:id="@+id/contentArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             >
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -28,6 +32,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/card_title_size"
+                    android:layout_marginTop="6dp"
                     />
                 <TextView
                     android:id="@+id/announcementBody"
@@ -35,6 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/announcementCreatorName"
                     android:textColor="@color/colorSecondaryText"
+                    android:layout_marginTop="12dp"
                     />
             </RelativeLayout>
             <ImageView
@@ -43,6 +49,32 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/sender_dog_photo"
                 android:src="@drawable/silhouette"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_below="@id/contentArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style="?android:buttonBarStyle"
+            android:gravity="right"
+            android:padding="@dimen/card_action_padding"
+            >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_show_profile"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@android:color/transparent"
+                android:layout_marginRight="@dimen/card_action_padding"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_reply"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@android:color/transparent"
+                android:textColor="@color/colorAccent"
                 />
         </LinearLayout>
     </RelativeLayout>

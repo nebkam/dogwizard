@@ -47,7 +47,7 @@
                     android:orientation="horizontal"
                     style="?android:buttonBarStyle"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="@dimen/card_action_padding"
                     >
                     <Button
                         android:layout_width="wrap_content"
@@ -56,6 +56,7 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:background="@android:color/transparent"
                         android:onClick="ignoreGPSWarning"
+                        android:layout_marginRight="@dimen/card_action_padding"
                         />
                     <Button
                         android:layout_width="wrap_content"
@@ -124,7 +125,7 @@
                     android:orientation="horizontal"
                     style="?android:buttonBarStyle"
                     android:gravity="right"
-                    android:padding="8dp"
+                    android:padding="@dimen/card_action_padding"
                     >
                     <Button
                         android:layout_width="wrap_content"
@@ -133,6 +134,7 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:background="@android:color/transparent"
                         android:onClick="skip"
+                        android:layout_marginRight="@dimen/card_action_padding"
                         />
                     <Button
                         android:layout_width="wrap_content"

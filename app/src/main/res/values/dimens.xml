@@ -12,4 +12,5 @@
     <dimen name="avatar_height">64dp</dimen>
     <dimen name="card_title_size">24sp</dimen>
     <dimen name="card_subtitle_size">14sp</dimen>
+    <dimen name="card_action_padding">8dp</dimen>
 </resources>

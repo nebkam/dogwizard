@@ -52,7 +52,7 @@
     <string name="btn_skip">Skip</string>
     <string name="message_from_label">From:</string>
     <string name="message_body_label">Message:</string>
-    <string name="reply_btn">Reply</string>
+    <string name="btn_reply">Reply</string>
     <string name="inbox_title">Inbox</string>
     <string name="message_title">Message</string>
     <string name="no_messages">There is no messages for you :(</string>
@@ -68,6 +68,7 @@
     <string name="err_photo_upload">Failed to upload photo</string>
     <string name="err_photo_download">Failed to download photo</string>
     <string name="sender_dog_photo">Sender\'s Dog\'s Photo</string>
+    <string name="btn_show_profile">Show Profile</string>
     <string-array name="dog_sex">
         <item>Male</item>
         <item>Female</item>
