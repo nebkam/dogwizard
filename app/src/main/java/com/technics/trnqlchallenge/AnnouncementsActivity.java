@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -14,12 +12,11 @@ import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseQueryAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnnouncementsNearbyActivity extends AppCompatActivity {
+public class AnnouncementsActivity extends AppCompatActivity {
     private Double latitude;
     private Double longitude;
     private RecyclerView announcementsView;

@@ -67,7 +67,7 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".PhotoActivity" />
         <activity android:name=".MessageInboxActivity" />
-        <activity android:name=".AnnouncementsNearbyActivity" />
+        <activity android:name=".AnnouncementsActivity" />
         <activity android:name=".ViewMessageActivity" />
         <activity android:name=".FriendlyPlacesActivity" />
         <activity android:name=".FriendlyPlaceDetailsActivity" />
