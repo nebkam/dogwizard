@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -66,6 +67,7 @@ public class AnnouncementsActivity extends AppCompatActivity {
             announcement.body = object.getString("body");
             ParseObject createdBy = object.getParseObject("createdBy");
             announcement.creatorName = createdBy.getString("dogName");
+            announcement.creatorPhoto = createdBy.getParseFile("photoFile");
 
             decorated.add(announcement);
         }

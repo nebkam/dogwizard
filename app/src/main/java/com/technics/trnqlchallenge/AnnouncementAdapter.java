@@ -33,6 +33,10 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementHolder
             Announcement announcement = announcementList.get(position);
             announcementHolder.body.setText( announcement.body );
             announcementHolder.creatorName.setText( announcement.creatorName );
+            if (announcement.creatorPhoto != null) {
+                announcementHolder.creatorPhoto.setParseFile(announcement.creatorPhoto);
+                announcementHolder.creatorPhoto.loadInBackground();
+            }
         }
     }
 
