@@ -33,6 +33,7 @@ public class MessageActivity extends AppCompatActivity {
 
         ParseObject message = new ParseObject("Message");
         message.put("from",user);
+        message.put("fromUserId",user.getObjectId());
         message.put("to",sendTo);
         message.put("body",body.getText().toString());
         message.put("isRead", false);
