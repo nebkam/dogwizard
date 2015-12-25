@@ -28,43 +28,43 @@ public class OwnerDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_details);
 
-        Intent intent = getIntent();
-        userToken = intent.getStringExtra("userToken");
-        dogName = (TextView)findViewById(R.id.dogName);
-        dogBreed = (TextView)findViewById(R.id.dogBreed);
-        dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
-        contactBtn = (Button)findViewById(R.id.btn_contact);
-
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.getInBackground(userToken, new GetCallback<ParseUser>() {
-            @Override
-            public void done(ParseUser user, ParseException e) {
-                if (e == null && user != null) {
-                    if (user.getString("dogName") != null) {
-                        dogName.setText(user.getString("dogName"));
-                    }
-                    if (user.getString("dogBreed") != null) {
-                        dogBreed.setText(user.getString("dogBreed"));
-                    }
-                    if (user.getString("photo") != null) {
-                        byte[] bytes = Base64.decode(user.getString("photo"),Base64.DEFAULT);
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                        dogPhoto.setImageBitmap(bitmap);
-                    }
-                    if (user.getBoolean("contact")) {
-                        contactBtn.setVisibility(View.VISIBLE);
-                    }
-                    else {
-                        contactBtn.setVisibility(View.GONE);
-                    }
-                }
-            }
-        });
+//        Intent intent = getIntent();
+//        userToken = intent.getStringExtra("userToken");
+//        dogName = (TextView)findViewById(R.id.dogName);
+//        dogBreed = (TextView)findViewById(R.id.dogBreed);
+//        dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
+//        contactBtn = (Button)findViewById(R.id.btn_contact);
+//
+//        ParseQuery<ParseUser> query = ParseUser.getQuery();
+//        query.getInBackground(userToken, new GetCallback<ParseUser>() {
+//            @Override
+//            public void done(ParseUser user, ParseException e) {
+//                if (e == null && user != null) {
+//                    if (user.getString("dogName") != null) {
+//                        dogName.setText(user.getString("dogName"));
+//                    }
+//                    if (user.getString("dogBreed") != null) {
+//                        dogBreed.setText(user.getString("dogBreed"));
+//                    }
+//                    if (user.getString("photo") != null) {
+//                        byte[] bytes = Base64.decode(user.getString("photo"),Base64.DEFAULT);
+//                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+//                        dogPhoto.setImageBitmap(bitmap);
+//                    }
+//                    if (user.getBoolean("contact")) {
+//                        contactBtn.setVisibility(View.VISIBLE);
+//                    }
+//                    else {
+//                        contactBtn.setVisibility(View.GONE);
+//                    }
+//                }
+//            }
+//        });
     }
 
-    public void contact(View view) {
-        Intent intent = new Intent(OwnerDetailsActivity.this,MessageActivity.class);
-        intent.putExtra("to",userToken);
-        startActivity(intent);
-    }
+//    public void contact(View view) {
+//        Intent intent = new Intent(OwnerDetailsActivity.this,MessageActivity.class);
+//        intent.putExtra("to",userToken);
+//        startActivity(intent);
+//    }
 }
