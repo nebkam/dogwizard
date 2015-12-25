@@ -19,8 +19,7 @@ import java.util.List;
 public class AnnouncementsActivity extends AppCompatActivity {
     private Double latitude;
     private Double longitude;
-    private RecyclerView announcementsView;
-    private AnnouncementAdapter announcementAdapter;
+    private AnnouncementAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +30,13 @@ public class AnnouncementsActivity extends AppCompatActivity {
         latitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LAT",0);
         longitude = intent.getDoubleExtra("com.technics.trnqlchallenge.LONG",0);
 
-        announcementsView = (RecyclerView)findViewById(R.id.announcement_list);
+        RecyclerView view = (RecyclerView)findViewById(R.id.announcement_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        announcementsView.setLayoutManager(layoutManager);
+        view.setLayoutManager(layoutManager);
 
-        announcementAdapter = new AnnouncementAdapter(null);
-        announcementsView.setAdapter(announcementAdapter);
+        adapter = new AnnouncementAdapter(null);
+        view.setAdapter(adapter);
         fetch();
     }
 
@@ -50,8 +49,8 @@ public class AnnouncementsActivity extends AppCompatActivity {
             @Override
             public void done(List<ParseObject> announcements, ParseException e) {
                 if (e == null) {
-                    announcementAdapter.refresh(decorate(announcements));
-                    announcementAdapter.notifyDataSetChanged();
+                    adapter.refresh(decorate(announcements));
+                    adapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.err_announcements, Toast.LENGTH_SHORT).show();
                 }
