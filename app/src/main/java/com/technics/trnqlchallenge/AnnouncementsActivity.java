@@ -68,6 +68,7 @@ public class AnnouncementsActivity extends AppCompatActivity {
             ParseObject createdBy = object.getParseObject("createdBy");
             announcement.creatorName = createdBy.getString("dogName");
             announcement.creatorPhoto = createdBy.getParseFile("photoFile");
+            announcement.creatorToken = createdBy.getObjectId();
 
             decorated.add(announcement);
         }

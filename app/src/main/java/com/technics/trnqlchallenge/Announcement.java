@@ -6,4 +6,5 @@ public class Announcement {
     protected String body;
     protected String creatorName;
     protected ParseFile creatorPhoto;
+    protected String creatorToken;
 }

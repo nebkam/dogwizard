@@ -62,6 +62,7 @@
             android:padding="@dimen/card_action_padding"
             >
             <Button
+                android:id="@+id/btn_owner_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_show_profile"
@@ -73,9 +74,10 @@
                 android:layout_marginEnd="@dimen/card_action_padding"
                 />
             <Button
+                android:id="@+id/btn_send_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_reply"
+                android:text="@string/btn_send_msg"
                 style="?android:attr/borderlessButtonStyle"
                 android:background="@android:color/transparent"
                 android:textColor="@color/colorAccent"

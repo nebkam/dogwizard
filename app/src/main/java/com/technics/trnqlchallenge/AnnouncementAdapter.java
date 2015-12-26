@@ -37,6 +37,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementHolder
                 announcementHolder.creatorPhoto.setParseFile(announcement.creatorPhoto);
                 announcementHolder.creatorPhoto.loadInBackground();
             }
+            announcementHolder.creatorToken = announcement.creatorToken;
         }
     }
 
