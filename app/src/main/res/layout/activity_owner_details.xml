@@ -34,9 +34,10 @@
                 android:layout_marginRight="16dp"
                 >
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginRight="@dimen/details_horizontal_margin"
                     >
                     <TextView
                         android:id="@+id/dogName"
@@ -45,7 +46,6 @@
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="@dimen/card_title_size"
                         android:layout_marginTop="6dp"
-                        android:text="Dog Name"
                         />
                     <TextView
                         android:id="@+id/dogBreed"
@@ -54,17 +54,15 @@
                         android:layout_below="@id/dogName"
                         android:textColor="@color/colorSecondaryText"
                         android:layout_marginTop="12dp"
-                        android:text="Dog Breed"
                         />
                 </RelativeLayout>
                 <com.parse.ParseImageView
-                    android:id="@+id/announcementCreatorPhoto"
+                    android:id="@+id/dogPhoto"
                     android:layout_width="@dimen/card_large_photo_width"
                     android:layout_height="@dimen/card_large_photo_height"
-                    android:adjustViewBounds="true"
-                    android:layout_weight="1"
                     android:contentDescription="@string/sender_dog_photo"
                     android:src="@drawable/silhouette"
+                    android:scaleType="fitCenter"
                     />
             </LinearLayout>
             <LinearLayout
@@ -77,20 +75,15 @@
                 android:padding="@dimen/card_action_padding"
                 >
                 <Button
+                    android:id="@+id/btn_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_show_profile"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:background="@android:color/transparent"
-                    android:layout_marginRight="@dimen/card_action_padding"
-                    />
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_reply"
+                    android:text="@string/send"
                     style="?android:attr/borderlessButtonStyle"
                     android:background="@android:color/transparent"
                     android:textColor="@color/colorAccent"
+                    android:onClick="contact"
+                    android:visibility="gone"
                     />
             </LinearLayout>
         </RelativeLayout>
