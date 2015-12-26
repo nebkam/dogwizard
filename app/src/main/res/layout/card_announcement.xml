@@ -34,6 +34,7 @@
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/card_title_size"
                     android:layout_marginTop="6dp"
+                    android:text="Reta"
                     />
                 <TextView
                     android:id="@+id/announcementBody"
@@ -42,16 +43,15 @@
                     android:layout_below="@id/announcementCreatorName"
                     android:textColor="@color/colorSecondaryText"
                     android:layout_marginTop="12dp"
+                    android:text="Pozdrav svima!"
                     />
             </RelativeLayout>
             <com.parse.ParseImageView
                 android:id="@+id/announcementCreatorPhoto"
                 android:layout_width="@dimen/card_small_photo_width"
                 android:layout_height="@dimen/card_small_photo_height"
-                android:adjustViewBounds="true"
-                android:layout_weight="1"
                 android:contentDescription="@string/sender_dog_photo"
-                android:src="@drawable/silhouette"
+                android:scaleType="centerCrop"
                 />
         </LinearLayout>
         <LinearLayout
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             style="?android:buttonBarStyle"
-            android:gravity="right"
+            android:gravity="left"
             android:padding="@dimen/card_action_padding"
             >
             <Button
@@ -69,6 +69,7 @@
                 android:text="@string/btn_show_profile"
                 style="?android:attr/borderlessButtonStyle"
                 android:background="@android:color/transparent"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="@dimen/card_action_padding"
                 />
             <Button

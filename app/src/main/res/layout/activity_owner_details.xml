@@ -61,7 +61,7 @@
                     android:layout_width="@dimen/card_large_photo_width"
                     android:layout_height="@dimen/card_large_photo_height"
                     android:contentDescription="@string/sender_dog_photo"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     />
             </LinearLayout>
             <LinearLayout
