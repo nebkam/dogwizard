@@ -70,6 +70,7 @@
     <string name="err_photo_download">Failed to download photo</string>
     <string name="sender_dog_photo">Sender\'s Dog\'s Photo</string>
     <string name="btn_show_profile">Show Profile</string>
+    <string name="btn_send_msg">Send Message</string>
     <string-array name="dog_sex">
         <item>Male</item>
         <item>Female</item>

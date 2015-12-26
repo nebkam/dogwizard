@@ -49,7 +49,9 @@ public class OwnerDetailsActivity extends AppCompatActivity {
                         dogBreed.setText(user.getString("dogBreed"));
                     }
                     ParseFile file = user.getParseFile("photoFile");
-                    if (file != null) {
+                    if (file == null) {
+                        dogPhoto.setVisibility(View.GONE);
+                    } else {
                         file.getDataInBackground(new GetDataCallback() {
                             @Override
                             public void done(byte[] bytes, ParseException e) {
