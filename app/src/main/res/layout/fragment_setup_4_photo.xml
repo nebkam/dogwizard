@@ -62,6 +62,7 @@
             android:text="Upload Photo"
             android:drawableLeft="@android:drawable/ic_menu_camera"
             android:drawablePadding="@dimen/button_padding"
+            android:onClick="pickImage"
             />
         <ImageView
             android:id="@+id/dogPhoto"

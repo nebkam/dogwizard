@@ -51,9 +51,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".SetupActivity"
-            android:noHistory="true" />
+        <activity android:name=".SetupActivity" />
         <activity
             android:name=".OwnersNearbyActivity"
             android:label="@string/title_activity_maps">

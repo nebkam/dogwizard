@@ -13,7 +13,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.parse.ParseUser;
@@ -67,6 +69,36 @@ public class SetupActivity extends AppCompatActivity {
         Intent intent = new Intent(SetupActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
+    }
+    public void pickImage(View View) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, SELECT_PHOTO);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK) {
+            if (data == null) {
+                System.out.print("Error occurred");
+                return;
+            }
+            try {
+                Context context = this;
+                InputStream inputStream = context.getContentResolver().openInputStream(data.getData());
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+                Button btnUploadPhoto = (Button)findViewById(R.id.btn_upload_photo);
+                btnUploadPhoto.setVisibility(View.GONE);
+                ImageView dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
+                dogPhoto.setImageBitmap(bitmap);
+                dogPhoto.setVisibility(View.VISIBLE);
+            }
+            catch (IOException ex){
+                ex.printStackTrace();
+            }
+        }
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
