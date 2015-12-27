@@ -4,25 +4,29 @@
     android:layout_height="match_parent"
     >
     <LinearLayout
+        android:layout_alignParentBottom="true"
         android:id="@+id/buttonPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/white"
+        android:orientation="horizontal"
+        style="?android:buttonBarStyle"
+        android:padding="@dimen/card_action_padding"
         >
         <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/white"
-            android:textColor="@color/colorPrimary"
+            android:layout_height="wrap_content"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@android:color/transparent"
             android:onClick="cancel"
+            android:textColor="@color/colorPrimaryTextInverse"
             android:text="Skip"
             />
         <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="?android:attr/borderlessButtonStyle"
             android:background="@android:color/white"
             android:textColor="@color/colorAccent"
             android:onClick="nextSlide"
