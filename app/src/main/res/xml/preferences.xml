@@ -8,11 +8,6 @@
         android:summaryOff="@string/pref_contact_summary_off"
         android:defaultValue="true"
         />
-    <CheckBoxPreference
-        android:key="pref_walk_reminder"
-        android:title="@string/pref_walk_reminder_label"
-        android:summary="@string/pref_walk_reminder_summary"
-        />
     <EditTextPreference
         android:key="pref_name"
         android:title="@string/your_dog_name"
