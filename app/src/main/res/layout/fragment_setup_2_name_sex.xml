@@ -1,11 +1,75 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/nameSexSlide"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <TextView
+    <LinearLayout
+        android:id="@+id/buttonPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name Sex"
-        />
-</ScrollView>
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:textColor="@color/colorPrimary"
+            android:onClick="cancel"
+            android:text="I'm Done"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:textColor="@color/colorAccent"
+            android:onClick="nextSlide"
+            android:text="Next"
+            />
+    </LinearLayout>
+    <android.support.percent.PercentRelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/buttonPanel"
+        android:gravity="center"
+        >
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/dogName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_widthPercent="66%"
+            app:layout_marginLeftPercent="17%"
+            >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName|textCapWords"
+                android:hint="@string/your_dog_name"
+                android:textColor="@color/colorPrimaryTextInverse"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <RadioGroup
+            android:layout_below="@id/dogName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            app:layout_marginLeftPercent="17%"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:text="Male"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                />
+        </RadioGroup>
+    </android.support.percent.PercentRelativeLayout>
+</RelativeLayout>
