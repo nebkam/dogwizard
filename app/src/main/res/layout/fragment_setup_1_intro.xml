@@ -8,17 +8,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
         >
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@android:color/white"
+            android:textColor="@color/colorPrimary"
+            android:onClick="cancel"
             android:text="Skip"
             />
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@android:color/white"
+            android:textColor="@color/colorAccent"
+            android:onClick="nextSlide"
             android:text="Setup"
             />
     </LinearLayout>
@@ -28,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonPanel"
         android:gravity="center"
-        android:textColor="@color/colorPrimaryTextInverse"
+        android:textColor="@color/colorPrimaryText"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"

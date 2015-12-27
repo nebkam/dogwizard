@@ -1,5 +1,6 @@
 package com.technics.trnqlchallenge;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.parse.ParseUser;
 
@@ -47,6 +49,15 @@ public class SetupActivity extends AppCompatActivity {
             // Otherwise, select the previous step.
             pager.setCurrentItem(pager.getCurrentItem() - 1);
         }
+    }
+
+    public void nextSlide(View view) {
+        pager.setCurrentItem( pager.getCurrentItem() + 1 );
+    }
+    public void cancel(View view) {
+        Intent intent = new Intent(SetupActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
