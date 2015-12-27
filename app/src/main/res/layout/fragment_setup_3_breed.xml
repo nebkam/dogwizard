@@ -1,11 +1,54 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/breedSlide"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <TextView
+    <LinearLayout
+        android:id="@+id/buttonPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Breed"
-        />
-</ScrollView>
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:textColor="@color/colorPrimary"
+            android:onClick="cancel"
+            android:text="I'm Done"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:textColor="@color/colorAccent"
+            android:onClick="nextSlide"
+            android:text="Next"
+            />
+    </LinearLayout>
+    <android.support.percent.PercentRelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/buttonPanel"
+        android:gravity="center"
+        >
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/dogBreedLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_widthPercent="66%"
+            >
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName|textCapWords"
+                android:hint="@string/your_dog_breed"
+                android:textColor="@color/colorPrimaryTextInverse"
+                />
+        </android.support.design.widget.TextInputLayout>
+    </android.support.percent.PercentRelativeLayout>
+</RelativeLayout>
