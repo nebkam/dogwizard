@@ -62,6 +62,7 @@
             app:layout_widthPercent="66%"
             >
             <AutoCompleteTextView
+                android:id="@+id/dogBreed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName|textCapWords"
