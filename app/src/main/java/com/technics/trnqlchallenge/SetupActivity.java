@@ -1,7 +1,10 @@
 package com.technics.trnqlchallenge;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -9,12 +12,19 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.parse.ParseUser;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class SetupActivity extends AppCompatActivity {
     private static final int NUM_PAGES = 4;
+    private static final int SELECT_PHOTO = 100;
     private ViewPager pager;
     private PagerAdapter pagerAdapter;
 
@@ -58,6 +68,38 @@ public class SetupActivity extends AppCompatActivity {
         Intent intent = new Intent(SetupActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
+    }
+    public void done(View view) {
+        Intent intent = new Intent(SetupActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void pickImage(View View) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, SELECT_PHOTO);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK) {
+            if (data == null) {
+                System.out.print("Error occurred");
+                return;
+            }
+            try {
+                Context context = this;
+                InputStream inputStream = context.getContentResolver().openInputStream(data.getData());
+
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                ImageView dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
+                dogPhoto.setImageBitmap(bitmap);
+            }
+            catch (IOException ex){
+                ex.printStackTrace();
+            }
+        }
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
