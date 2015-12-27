@@ -19,7 +19,7 @@
             android:layout_margin="6dp"
             style="?android:attr/borderlessButtonStyle"
             android:background="@android:color/transparent"
-            android:onClick="cancel"
+            android:onClick="closeSetup"
             android:textColor="@color/colorPrimaryTextInverse"
             android:text="Skip"
             />

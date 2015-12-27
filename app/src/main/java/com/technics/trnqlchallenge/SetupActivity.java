@@ -33,15 +33,14 @@ public class SetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
-//UNCOMMENT WHEN DONE TESTING SETUP
 //        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
 //        preferences.edit().putBoolean("firstRun",false).apply();
-//        ParseUser user = ParseUser.getCurrentUser();
-//        user.put("dogName","Anonymous");
-//        user.put("dogBreed","Unknown");
-//        user.put("dogSex","Unknown");
-//        user.put("contact", true);
-//        user.saveInBackground();
+        ParseUser user = ParseUser.getCurrentUser();
+        user.put("dogName","Anonymous");
+        user.put("dogBreed","Unknown");
+        user.put("dogSex","Unknown");
+        user.put("contact", true);
+        user.saveInBackground();
 
 
         pager = (ViewPager)findViewById(R.id.setupPager);
@@ -64,42 +63,10 @@ public class SetupActivity extends AppCompatActivity {
     public void nextSlide(View view) {
         pager.setCurrentItem( pager.getCurrentItem() + 1 );
     }
-    public void cancel(View view) {
+    public void closeSetup(View view) {
         Intent intent = new Intent(SetupActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
-    }
-    public void done(View view) {
-        Intent intent = new Intent(SetupActivity.this,MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-    public void pickImage(View View) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, SELECT_PHOTO);
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK) {
-            if (data == null) {
-                System.out.print("Error occurred");
-                return;
-            }
-            try {
-                Context context = this;
-                InputStream inputStream = context.getContentResolver().openInputStream(data.getData());
-
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                ImageView dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
-                dogPhoto.setImageBitmap(bitmap);
-            }
-            catch (IOException ex){
-                ex.printStackTrace();
-            }
-        }
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {

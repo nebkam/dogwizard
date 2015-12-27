@@ -19,7 +19,7 @@
             android:layout_margin="6dp"
             style="?android:attr/borderlessButtonStyle"
             android:background="@android:color/transparent"
-            android:onClick="cancel"
+            android:onClick="closeSetup"
             android:textColor="@color/colorPrimaryTextInverse"
             android:text="I'm Done"
             />
@@ -43,7 +43,7 @@
                 android:textColor="@color/colorPrimaryTextInverse"
                 android:layout_gravity="center"
                 android:textAllCaps="true"
-                android:onClick="done"
+                android:onClick="closeSetup"
                 android:text="Finish"
                 />
         </android.support.v7.widget.CardView>
@@ -62,7 +62,6 @@
             android:text="Upload Photo"
             android:drawableLeft="@android:drawable/ic_menu_camera"
             android:drawablePadding="@dimen/button_padding"
-            android:onClick="pickImage"
             />
         <ImageView
             android:id="@+id/dogPhoto"
