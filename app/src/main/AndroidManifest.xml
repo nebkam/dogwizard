@@ -59,7 +59,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.technics.trnqlchallenge.MainActivity" />
         </activity>
-        <activity android:name=".SplashActivity" />
         <activity android:name=".VetsNearbyActivity" />
         <activity android:name=".VetDetailsActivity" />
         <activity android:name=".OwnerDetailsActivity" />
