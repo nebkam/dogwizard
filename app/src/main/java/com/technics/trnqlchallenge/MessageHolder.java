@@ -1,15 +1,16 @@
 package com.technics.trnqlchallenge;
 
-import android.content.ClipData;
 import android.content.Intent;
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.parse.ParseImageView;
+
 public class MessageHolder extends RecyclerView.ViewHolder{
     protected TextView body;
     protected TextView from;
+    protected ParseImageView fromPhoto;
     protected Message item;
 
     public MessageHolder(View view){
@@ -18,7 +19,7 @@ public class MessageHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View view) {
                 System.out.println("foo" + item.fromUserId);
-                Intent intent = new Intent(view.getContext(),ViewMessageActivity.class);
+                Intent intent = new Intent(view.getContext(), ViewMessageActivity.class);
                 intent.putExtra("body", item.body);
                 intent.putExtra("from", item.from);
                 intent.putExtra("fromUserId", item.fromUserId);
@@ -27,5 +28,6 @@ public class MessageHolder extends RecyclerView.ViewHolder{
         });
         body = (TextView) view.findViewById(R.id.messageBody);
         from = (TextView) view.findViewById(R.id.messageFromName);
+        fromPhoto = (ParseImageView) view.findViewById(R.id.fromPhoto);
     }
 }
