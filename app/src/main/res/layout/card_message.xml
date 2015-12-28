@@ -2,8 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
+    android:layout_height="@dimen/avatar_height"
+    android:background="@android:color/background_light"
+    android:layout_marginBottom="4dp"
     >
     <com.technics.trnqlchallenge.RoundedParseImageView
         android:id="@+id/fromPhoto"
@@ -12,23 +13,38 @@
         android:padding="@dimen/avatar_padding"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_centerInParent="true"
         android:src="@drawable/silhouette"
         />
-    <TextView
-        android:id="@+id/messageFromName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@id/fromPhoto"
-        android:layout_toStartOf="@id/fromPhoto"
-        />
-    <TextView
-        android:id="@+id/messageBody"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/messageFromName"
-        android:layout_toLeftOf="@id/fromPhoto"
-        android:layout_toStartOf="@id/fromPhoto"
-        />
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/avatar_text_padding"
+        android:layout_marginStart="@dimen/avatar_text_padding"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        >
+        <TextView
+            android:id="@+id/messageFromName"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/avatar_primary_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/messageBody"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/avatar_secondary_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            />
+    </LinearLayout>
 </RelativeLayout>

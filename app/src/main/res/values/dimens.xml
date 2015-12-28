@@ -17,4 +17,8 @@
     <dimen name="card_large_photo_height">152dp</dimen>
     <dimen name="avatar_size">48dp</dimen>
     <dimen name="avatar_padding">4dp</dimen>
+    <dimen name="avatar_text_padding">72dp</dimen>
+    <dimen name="avatar_primary_text_size">16sp</dimen>
+    <dimen name="avatar_secondary_text_size">14sp</dimen>
+    <dimen name="avatar_height">72dp</dimen>
 </resources>
