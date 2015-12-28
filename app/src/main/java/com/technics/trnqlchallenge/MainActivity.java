@@ -46,7 +46,9 @@ public class MainActivity extends SmartCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (isFirstRun()) {
-            showSplash();
+            Intent intent = new Intent(MainActivity.this,SetupActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         announcementCount = (TextView)findViewById(R.id.announcement_count);
@@ -197,13 +199,6 @@ public class MainActivity extends SmartCompatActivity {
     private boolean isFirstRun() {
         SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         return preferences.getBoolean("firstRun",true);
-    }
-
-    private void showSplash(){
-        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        preferences.edit().putBoolean("firstRun",false).apply();
-        Intent intent = new Intent(MainActivity.this,SplashActivity.class);
-        startActivity(intent);
     }
 
     public void showSettings(View View) {

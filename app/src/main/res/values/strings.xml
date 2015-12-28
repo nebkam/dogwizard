@@ -4,7 +4,7 @@
     <string name="dog_name">Dog\'s Name</string>
     <string name="your_dog_name">Your Dog\'s Name</string>
     <string name="your_dog_breed">Your Dog\'s Breed</string>
-    <string name="your_dog_photo">Your Dog Photo</string>
+    <string name="your_dog_photo">Your Dog\'s Photo</string>
     <string name="dog_breed">Dog\'s Breed</string>
     <string name="pick_breed">Pick a Breed</string>
     <string name="save">Save</string>
@@ -69,6 +69,15 @@
     <string name="sender_dog_photo">Sender\'s Dog\'s Photo</string>
     <string name="btn_show_profile">Show Profile</string>
     <string name="btn_send_msg">Send Message</string>
+    <string name="setup">Setup</string>
+    <string name="setup_teaser">Please take a minute to setup your dog\'s profile and let other users recognize you</string>
+    <string name="app_logo">App Logo</string>
+    <string name="btn_done">Done</string>
+    <string name="btn_next">Next</string>
+    <string name="sex_m">Male</string>
+    <string name="sex_f">Female</string>
+    <string name="btn_upload">Upload Photo</string>
+    <string name="btn_finish">Finish</string>
     <string-array name="dog_sex">
         <item>Male</item>
         <item>Female</item>

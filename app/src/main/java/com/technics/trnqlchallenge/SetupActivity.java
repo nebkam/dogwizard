@@ -12,13 +12,15 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -35,8 +37,6 @@ public class SetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
-//        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-//        preferences.edit().putBoolean("firstRun",false).apply();
         ParseUser user = ParseUser.getCurrentUser();
         user.put("dogName","Anonymous");
         user.put("dogBreed","Unknown");
@@ -65,17 +65,23 @@ public class SetupActivity extends AppCompatActivity {
     public void nextSlide(View view) {
         pager.setCurrentItem( pager.getCurrentItem() + 1 );
     }
+
     public void closeSetup(View view) {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        preferences.edit().putBoolean("firstRun",false).apply();
+
         Intent intent = new Intent(SetupActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
     }
+
     public void pickImage(View View) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, SELECT_PHOTO);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -94,6 +100,24 @@ public class SetupActivity extends AppCompatActivity {
                 ImageView dogPhoto = (ImageView)findViewById(R.id.dogPhoto);
                 dogPhoto.setImageBitmap(bitmap);
                 dogPhoto.setVisibility(View.VISIBLE);
+                //Encode to string
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                byte[] bytes = byteArrayOutputStream.toByteArray();
+                //Save to Parse
+                final ParseFile file = new ParseFile("photo.jpg",bytes);
+                file.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            ParseUser user = ParseUser.getCurrentUser();
+                            user.put("photoFile", file);
+                            user.saveInBackground();
+                        } else {
+                            Toast.makeText(getApplicationContext(), R.string.err_photo_upload, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
             catch (IOException ex){
                 ex.printStackTrace();

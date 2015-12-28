@@ -16,12 +16,13 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
+            android:layout_margin="8.5dp"
             style="?android:attr/borderlessButtonStyle"
             android:background="@android:color/transparent"
             android:onClick="closeSetup"
             android:textColor="@color/colorPrimaryTextInverse"
-            android:text="I'm Done"
+            android:textAllCaps="true"
+            android:text="@string/btn_done"
             />
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -44,7 +45,7 @@
                 android:layout_gravity="center"
                 android:textAllCaps="true"
                 android:onClick="closeSetup"
-                android:text="Finish"
+                android:text="@string/btn_finish"
                 />
         </android.support.v7.widget.CardView>
     </LinearLayout>
@@ -59,12 +60,17 @@
             android:id="@+id/btn_upload_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload Photo"
-            android:drawableLeft="@android:drawable/ic_menu_camera"
+            android:text="@string/btn_upload"
+            android:drawableLeft="@drawable/ic_camera_alt_24dp"
+            android:drawableStart="@drawable/ic_camera_alt_24dp"
             android:drawablePadding="@dimen/button_padding"
+            android:background="@android:color/white"
+            android:padding="@dimen/button_padding"
+            android:textAllCaps="true"
             android:onClick="pickImage"
             />
         <ImageView
+            android:contentDescription="@string/your_dog_photo"
             android:id="@+id/dogPhoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

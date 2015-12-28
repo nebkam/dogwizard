@@ -16,12 +16,13 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
+            android:layout_margin="8.5dp"
             style="?android:attr/borderlessButtonStyle"
             android:background="@android:color/transparent"
             android:onClick="closeSetup"
             android:textColor="@color/colorPrimaryTextInverse"
-            android:text="Skip"
+            android:textAllCaps="true"
+            android:text="@string/skip"
             />
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -44,7 +45,7 @@
                 android:layout_gravity="center"
                 android:onClick="nextSlide"
                 android:textAllCaps="true"
-                android:text="Setup"
+                android:text="@string/setup"
                 />
         </android.support.v7.widget.CardView>
     </LinearLayout>
@@ -61,7 +62,7 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:text="Please take a minute to setup your dog's profile and let other users recognize you"
+        android:text="@string/setup_teaser"
         />
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
@@ -70,6 +71,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         >
         <ImageView
+            android:contentDescription="@string/app_logo"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:src="@drawable/logo"
