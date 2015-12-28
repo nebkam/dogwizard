@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     >
-    <com.parse.ParseImageView
+    <com.technics.trnqlchallenge.RoundedParseImageView
         android:id="@+id/fromPhoto"
         android:layout_width="@dimen/card_small_photo_width"
         android:layout_height="@dimen/card_small_photo_height"

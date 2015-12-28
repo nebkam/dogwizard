@@ -5,12 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.parse.ParseImageView;
-
 public class MessageHolder extends RecyclerView.ViewHolder{
     protected TextView body;
     protected TextView from;
-    protected ParseImageView fromPhoto;
+    protected RoundedParseImageView fromPhoto;
     protected Message item;
 
     public MessageHolder(View view){
@@ -28,6 +26,6 @@ public class MessageHolder extends RecyclerView.ViewHolder{
         });
         body = (TextView) view.findViewById(R.id.messageBody);
         from = (TextView) view.findViewById(R.id.messageFromName);
-        fromPhoto = (ParseImageView) view.findViewById(R.id.fromPhoto);
+        fromPhoto = (RoundedParseImageView) view.findViewById(R.id.fromPhoto);
     }
 }
