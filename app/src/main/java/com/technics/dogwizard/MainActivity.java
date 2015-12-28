@@ -46,6 +46,8 @@ public class MainActivity extends SmartCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (isFirstRun()) {
+            SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+            preferences.edit().putBoolean("firstRun",false).apply();
             Intent intent = new Intent(MainActivity.this,SetupActivity.class);
             startActivity(intent);
             finish();

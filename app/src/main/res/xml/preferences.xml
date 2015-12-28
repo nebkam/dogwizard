@@ -24,13 +24,13 @@
         android:summary="%s"
         android:entries="@array/dog_sex"
         android:entryValues="@array/dog_sex_values"
-        android:defaultValue="0" />
+        android:defaultValue="Unknown" />
     <Preference
         android:key="pref_photo"
         android:title="@string/your_dog_photo"
         >
         <intent android:action="android.intent.action.VIEW"
-            android:targetPackage="com.technics.trnqlchallenge"
-            android:targetClass="com.technics.trnqlchallenge.PhotoActivity" />
+            android:targetPackage="com.technics.dogwizard"
+            android:targetClass="com.technics.dogwizard.PhotoActivity" />
     </Preference>
 </PreferenceScreen>

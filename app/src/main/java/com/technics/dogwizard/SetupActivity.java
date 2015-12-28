@@ -67,9 +67,6 @@ public class SetupActivity extends AppCompatActivity {
     }
 
     public void closeSetup(View view) {
-        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        preferences.edit().putBoolean("firstRun",false).apply();
-
         Intent intent = new Intent(SetupActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
