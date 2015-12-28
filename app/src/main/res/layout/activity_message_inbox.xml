@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/purple"
-    tools:context="com.technics.trnqlchallenge.MessageInboxActivity">
+    tools:context="com.technics.dogwizard.MessageInboxActivity">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/messages_list"
         android:layout_width="match_parent"

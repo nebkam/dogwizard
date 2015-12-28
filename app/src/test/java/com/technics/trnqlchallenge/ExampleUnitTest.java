@@ -1,4 +1,4 @@
-package com.technics.trnqlchallenge;
+package com.technics.dogwizard;
 
 import org.junit.Test;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.technics.trnqlchallenge">
+    package="com.technics.dogwizard">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -14,14 +14,14 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name=".MyApplication"
+        android:name="com.technics.dogwizard.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:name">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.technics.dogwizard.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,30 +51,30 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".SetupActivity" />
+        <activity android:name="com.technics.dogwizard.SetupActivity" />
         <activity
-            android:name=".OwnersNearbyActivity"
+            android:name="com.technics.dogwizard.OwnersNearbyActivity"
             android:label="@string/title_activity_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.technics.trnqlchallenge.MainActivity" />
+                android:value="com.technics.dogwizard.MainActivity" />
         </activity>
-        <activity android:name=".VetsNearbyActivity" />
-        <activity android:name=".VetDetailsActivity" />
-        <activity android:name=".OwnerDetailsActivity" />
+        <activity android:name="com.technics.dogwizard.VetsNearbyActivity" />
+        <activity android:name="com.technics.dogwizard.VetDetailsActivity" />
+        <activity android:name="com.technics.dogwizard.OwnerDetailsActivity" />
         <activity
-            android:name=".SendAnnouncementActivity"
+            android:name="com.technics.dogwizard.SendAnnouncementActivity"
             android:noHistory="true" />
         <activity
-            android:name=".MessageActivity"
+            android:name="com.technics.dogwizard.MessageActivity"
             android:noHistory="true" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".PhotoActivity" />
-        <activity android:name=".MessageInboxActivity" />
-        <activity android:name=".AnnouncementsActivity" />
-        <activity android:name=".ViewMessageActivity" />
-        <activity android:name=".FriendlyPlacesActivity" />
-        <activity android:name=".FriendlyPlaceDetailsActivity" />
+        <activity android:name="com.technics.dogwizard.SettingsActivity" />
+        <activity android:name="com.technics.dogwizard.PhotoActivity" />
+        <activity android:name="com.technics.dogwizard.MessageInboxActivity" />
+        <activity android:name="com.technics.dogwizard.AnnouncementsActivity" />
+        <activity android:name="com.technics.dogwizard.ViewMessageActivity" />
+        <activity android:name="com.technics.dogwizard.FriendlyPlacesActivity" />
+        <activity android:name="com.technics.dogwizard.FriendlyPlaceDetailsActivity" />
     </application>
 
 </manifest>

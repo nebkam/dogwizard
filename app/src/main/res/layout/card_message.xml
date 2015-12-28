@@ -6,7 +6,7 @@
     android:background="@android:color/background_light"
     android:layout_marginBottom="4dp"
     >
-    <com.technics.trnqlchallenge.RoundedParseImageView
+    <com.technics.dogwizard.RoundedParseImageView
         android:id="@+id/fromPhoto"
         android:layout_width="@dimen/avatar_size"
         android:layout_height="@dimen/avatar_size"
