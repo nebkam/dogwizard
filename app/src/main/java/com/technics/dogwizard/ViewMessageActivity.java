@@ -24,9 +24,7 @@ public class ViewMessageActivity extends AppCompatActivity {
         query.whereEqualTo("objectId", getIntent().getStringExtra("fromUserId"));
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
-                if (object == null) {
-                    System.out.print("There was an error!");
-                } else {
+                if (object != null) {
                     String dogName = object.getString("dogName");
                     TextView messageFrom = (TextView) findViewById(R.id.messageFrom);
                     messageFrom.setText(dogName);

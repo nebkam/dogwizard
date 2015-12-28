@@ -79,7 +79,7 @@ public class PhotoActivity extends AppCompatActivity {
                     }
                 });
             } catch (IOException ex){
-                ex.printStackTrace();
+//                ex.printStackTrace();
             }
         }
     }

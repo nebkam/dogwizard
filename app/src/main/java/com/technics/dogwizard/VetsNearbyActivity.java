@@ -110,7 +110,7 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                         }
                     }
                     catch (JSONException ex) {
-                        ex.printStackTrace();
+//                        ex.printStackTrace();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -118,8 +118,7 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
             @Override
             public void onErrorResponse(VolleyError error) {
                 // Error handling
-                System.out.println("Something went wrong!");
-                error.printStackTrace();
+//                error.printStackTrace();
             }
         });
         Volley.newRequestQueue(this).add(stringRequest);

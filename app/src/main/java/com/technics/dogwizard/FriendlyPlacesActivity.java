@@ -99,8 +99,6 @@ public class FriendlyPlacesActivity extends AppCompatActivity implements OnMapRe
                     else {
                         Toast.makeText(getApplicationContext(), R.string.no_friendly_places_nearby, Toast.LENGTH_LONG).show();
                     }
-                } else {
-                    System.out.println(e.getMessage());
                 }
             }
         });

@@ -84,7 +84,6 @@ public class SetupActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK) {
             if (data == null) {
-                System.out.print("Error occurred");
                 return;
             }
             try {
@@ -117,7 +116,7 @@ public class SetupActivity extends AppCompatActivity {
                 });
             }
             catch (IOException ex){
-                ex.printStackTrace();
+//                ex.printStackTrace();
             }
         }
     }

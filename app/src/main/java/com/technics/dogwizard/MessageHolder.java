@@ -16,7 +16,6 @@ public class MessageHolder extends RecyclerView.ViewHolder{
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("foo" + item.fromUserId);
                 Intent intent = new Intent(view.getContext(), ViewMessageActivity.class);
                 intent.putExtra("body", item.body);
                 intent.putExtra("from", item.from);
