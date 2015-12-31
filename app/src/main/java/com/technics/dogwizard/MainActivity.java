@@ -161,11 +161,13 @@ public class MainActivity extends SmartCompatActivity {
     }
 
     public void skip(View view) {
-        ParseUser user = ParseUser.getCurrentUser();
-        user.addUnique("skipped",currentPlace.getPlaceId());
-        user.saveInBackground();
+        if (currentPlace != null) {
+            ParseUser user = ParseUser.getCurrentUser();
+            user.addUnique("skipped",currentPlace.getPlaceId());
+            user.saveInBackground();
 
-        nextCard();
+            nextCard();
+        }
     }
 
     public void markAsFriendly(View view) {
