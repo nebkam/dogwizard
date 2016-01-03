@@ -77,7 +77,7 @@ public class OwnersNearbyActivity extends SmartCompatActivity implements OnMapRe
                 for (int i = 0; i < ownersNearby.size(); i++) {
                     PersonEntry personEntry = ownersNearby.get(i);
                     LatLng latLng = new LatLng(personEntry.getLatitude(),personEntry.getLongitude());
-                    Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_24dp)));
+                    Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
                     boundsBuilder.include(latLng);
                     markers.put(marker.getId(),personEntry.getUserToken());
                 }

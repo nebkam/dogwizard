@@ -82,7 +82,7 @@ public class VetsNearbyActivity extends AppCompatActivity  implements OnMapReady
                             }
 
                             LatLng latLng = new LatLng(markerLatitude, markerLongitude);
-                            Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(markerTitle).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_24dp)));
+                            Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
                             boundsBuilder.include(latLng);
 
                             Vet vetFound = new Vet(markerTitle,city,street,streetNumber,phone,website);

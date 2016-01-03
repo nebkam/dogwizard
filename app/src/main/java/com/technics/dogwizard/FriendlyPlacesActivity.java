@@ -74,7 +74,7 @@ public class FriendlyPlacesActivity extends AppCompatActivity implements OnMapRe
                                 }
 
                                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                                Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location_on_24dp)));
+                                Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
                                 boundsBuilder.include(latLng);
 
                                 FriendlyPlace friendlyPlace = new FriendlyPlace(name,address,phone,website);
